@@ -212,7 +212,7 @@ MonoBehaviour:
   maxFov: 70
   PanSpeed: 6
   ZoomSpeedTouch: 0.1
-  ZoomSpeedMouse: 6
+  ZoomSpeedMouse: 8
 --- !u!1 &2627418035052061824
 GameObject:
   m_ObjectHideFlags: 0

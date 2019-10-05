@@ -47,5 +47,4 @@ public class Entity : MonoBehaviour
             }
         }
     }
-    // TODO fall of edge
 }
