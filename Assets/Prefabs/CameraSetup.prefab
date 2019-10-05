@@ -208,11 +208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 6043037687938151849}
-  minFov: 20
+  minFov: 12
   maxFov: 70
-  PanSpeed: 5
+  PanSpeed: 6
   ZoomSpeedTouch: 0.1
-  ZoomSpeedMouse: 5
+  ZoomSpeedMouse: 6
 --- !u!1 &2627418035052061824
 GameObject:
   m_ObjectHideFlags: 0

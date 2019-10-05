@@ -74,14 +74,14 @@ public class SequenceDetector
         // track output cycle if we are over volume threshold
         if (IsOverVolumeThreshold)
             outputs.Add(output);
-
+        /*
         Debug.Log(new
         {
             noteName = detectedNote.NoteName,
             musical = pitchToMusicalNote(output.pitch),
             volume = output.volume,
             IsOverVolumeThreshold,
-        });
+        });*/
     }
 
     public void Beat()
