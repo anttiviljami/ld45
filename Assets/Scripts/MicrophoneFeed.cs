@@ -64,8 +64,6 @@ public class MicrophoneFeed : MonoBehaviour
         {
             if (!microphoneInput.GetData(samples, micPosition))
                 return; // failed
-
-            Debug.Log("micPosition: " + micPosition);
         }
         else
         {
