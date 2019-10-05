@@ -44,4 +44,13 @@ public class GameManager : MonoBehaviour
         sequenceDetector.Beat(); // triggers beat
         tickSound.PlayOneShot(tickSound.clip);
     }
+
+    private void Update()
+    {
+        // Esc maps to back button on Android
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
