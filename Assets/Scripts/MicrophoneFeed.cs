@@ -7,49 +7,47 @@ using UnityEngine.Audio;
 
 public class MicrophoneFeed : MonoBehaviour
 {
-  RawImage image;
+  private static MicrophoneFeed instance;
+  public static  MicrophoneFeed Instance
+  {
+    get
+    {
+      if (instance == null)
+      {
+        var go = new GameObject("Microphone");
+        instance = go.AddComponent<MicrophoneFeed>();
+      }
+
+      return instance;
+    }
+  }
+
+  public static event Action ThresholdStart;
+  public static event Action<MicrophoneOutput> OutputAnalyzed;
+
+  public static event Action ThresholdEnd;
+
+  public struct MicrophoneOutput
+  {
+    public float pitch;
+    public float volume;
+  }
+
+  public float CurrentVolume { get; private set; }
+  public float CurrentPitch { get; private set; }
+
+  private AudioSource micAudioSource;
+
   AudioClip microphoneInput;
-  float _timer = 0;
-  float _alpha = .5f * 255;
 
   void Awake()
   {
-    image = gameObject.GetComponent<RawImage>();
-
     // init microphone
     if (Microphone.devices.Length > 0)
       microphoneInput = Microphone.Start(Microphone.devices[0], true, 999, 44100);
-  }
 
-  void Update()
-  {
-    // increment timer
-    _timer += Time.deltaTime;
-
-    // cycle orb colour
-    var colors = new List<Color>();
-
-    colors.Add(new Color(255, 0, 0));
-    colors.Add(new Color(255, 255, 0));
-    colors.Add(new Color(0, 255, 0));
-    colors.Add(new Color(0, 255, 255));
-    colors.Add(new Color(0, 0, 255));
-    colors.Add(new Color(255, 0, 255));
-
-    float cycleSpeed = 2;
-
-    int curr = (int)Math.Floor(cycleSpeed * _timer) % colors.Count;
-    int next = curr + 1 < colors.Count ? curr + 1 : 0;
-    float phase = cycleSpeed * _timer - Mathf.Floor(cycleSpeed * _timer);
-
-    Debug.Log(new { curr, next, phase });
-
-    image.color = Color.Lerp(colors[curr], colors[next], phase);
-
-    // resize the orb according to mic level
-    float level = GetMicrophoneLevel();
-    float size = .33f + level * .66f;
-    transform.localScale = new Vector3(size, size, size);
+      micAudioSource = gameObject.AddComponent<AudioSource>();
+      micAudioSource.clip = microphoneInput;
   }
 
   /*
@@ -57,13 +55,17 @@ public class MicrophoneFeed : MonoBehaviour
    *
    * Source: https://www.reddit.com/r/Unity3D/comments/49wuld/best_way_to_implement_microphone_input/
    */
-  private float GetMicrophoneLevel()
+  private float GetMicrophoneLevel(float time)
   {
+
     // get mic volume
-    int dec = 128;
+    int dec = 128; // TODO factor in time
     float[] waveData = new float[dec];
     int micPosition = Microphone.GetPosition(null) - (dec + 1); // null means the first microphone
     microphoneInput.GetData(waveData, micPosition);
+    micAudioSource.GetSpectrumData(waveData, 0, FFTWindow.BlackmanHarris);
+
+    // TODO magic
 
     // get peak on the last 128 samples
     float levelMax = 0;
