@@ -24,17 +24,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        instance = this;
-    }
-
     private MicrophoneFeed microphoneFeed;
 
     private SequenceDetector sequenceDetector;
 
     void Awake()
     {
+        instance = this;
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
         sequenceDetector = new SequenceDetector();
     }
