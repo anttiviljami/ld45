@@ -9,11 +9,11 @@ public struct NoteSequence : IEqualityComparer<NoteSequence>
     public Note note2;
     public Note note3;
 
-    public NoteSequence(Note.Name noteName1, Note.Name noteName2, Note.Name noteName3)
+    public NoteSequence(Note _note1, Note _note2, Note _note3)
     {
-        note1 = new Note(noteName1);
-        note2 = new Note(noteName2);
-        note3 = new Note(noteName3);
+        note1 = _note1;
+        note2 = _note2;
+        note3 = _note3;
     }
 
     public bool Equals(NoteSequence sequence1, NoteSequence sequence2)
@@ -27,5 +27,10 @@ public struct NoteSequence : IEqualityComparer<NoteSequence>
     {
         int hCode = (int)sequence.note1.NoteName ^ (int)sequence.note2.NoteName ^ (int)sequence.note3.NoteName;
         return hCode.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return "NoteSequence: " + note1.NoteName + ", " + note2.NoteName + ", " + note3.NoteName;
     }
 }

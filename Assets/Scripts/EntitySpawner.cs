@@ -42,11 +42,11 @@ public class EntitySpawner : MonoBehaviour
         {
             if (Random.value < 0.5f)
             {
-                OnSequenceDetected(new NoteSequence(Note.Name.Animals, Note.Name.Plants, Note.Name.Weather));
+                OnSequenceDetected(new NoteSequence(new Note(Note.Name.Animals), new Note(Note.Name.Plants), new Note(Note.Name.Weather)));
             }
             else
             {
-                OnSequenceDetected(new NoteSequence(Note.Name.Animals, Note.Name.Plants, Note.Name.Earth));
+                OnSequenceDetected(new NoteSequence(new Note(Note.Name.Animals), new Note(Note.Name.Plants), new Note(Note.Name.Earth)));
             }
         }
     }

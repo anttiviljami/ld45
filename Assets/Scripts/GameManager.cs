@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
             }
             if (instance == null)
             {
+                Debug.Log("Init");
                 var go = new GameObject("GameManager");
                 instance = go.AddComponent<GameManager>();
-                Debug.Log("Created new GameManager");
             }
 
             return instance;
@@ -30,9 +30,14 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Game manager init");
         instance = this;
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
         sequenceDetector = new SequenceDetector();
+        InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
+    }
+
+    void Beat()
+    {
+        sequenceDetector.Beat(); // triggers beat
     }
 }

@@ -10,7 +10,7 @@ public class MicrophoneFeed : MonoBehaviour
 {
     private const int SAMPLE_FREQUENCY = 44100;
     private const int PROCESS_SAMPLE_SIZE = 8192; // this is the maximum sample size supported for GetData
-    private const float PROCESS_INTERVAL = .1f; // 0.1 seconds
+    private const float PROCESS_INTERVAL = 1f / 60f; // how often samples are processed
 
     private static MicrophoneFeed instance;
     public static MicrophoneFeed Instance
@@ -44,13 +44,10 @@ public class MicrophoneFeed : MonoBehaviour
     {
         // init microphone (use first microphone available)
         if (Microphone.devices.Length > 0)
-        {
             microphoneInput = Microphone.Start(Microphone.devices[0], true, 30, SAMPLE_FREQUENCY);
-        }
 
         microphoneSource = gameObject.AddComponent<AudioSource>();
-
-        InvokeRepeating("ProcessMicrophoneData", PROCESS_INTERVAL, PROCESS_INTERVAL); // process microphone data every 0.1s
+        InvokeRepeating("ProcessMicrophoneData", PROCESS_INTERVAL, PROCESS_INTERVAL);
     }
 
     void ProcessMicrophoneData()
@@ -74,6 +71,12 @@ public class MicrophoneFeed : MonoBehaviour
 
         float rms = Mathf.Sqrt(sum / PROCESS_SAMPLE_SIZE); // rms = square root of average
         float volume = Mathf.Sqrt(rms); // get volume between 0-1
+
+        if (volume == 0)
+        {
+            // empty sample, do nothing
+            return;
+        }
 
         // calculate pitch
         float[] spectrum = new float[PROCESS_SAMPLE_SIZE];
@@ -104,6 +107,6 @@ public class MicrophoneFeed : MonoBehaviour
         var output = new MicrophoneOutput();
         output.volume = volume;
         output.pitch = pitch;
-        OutputAnalyzed.Invoke(output);
+        OutputAnalyzed(output);
     }
 }
