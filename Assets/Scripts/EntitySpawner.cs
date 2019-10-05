@@ -5,10 +5,10 @@ using UnityEngine;
 public class EntitySpawner : MonoBehaviour
 {
     [SerializeField]
-    private Entity defaultPrefab;
+    private Entity defaultPrefab = default;
 
     [SerializeField]
-    private Transform entitiesRoot;
+    private Transform entitiesRoot = default;
 
     private List<Entity> prefabLibrary = new List<Entity>();
 

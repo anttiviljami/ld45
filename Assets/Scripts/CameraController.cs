@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Cinemachine.CinemachineVirtualCamera targetCamera;
+    private Cinemachine.CinemachineVirtualCamera targetCamera = default;
 
     [SerializeField]
-    private GameObject drapPanel;
+    private GameObject drapPanel = default;
 
     void Start()
     {
