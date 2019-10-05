@@ -10,9 +10,6 @@ public class EntitySpawner : MonoBehaviour
     [SerializeField]
     private Transform entitiesRoot;
 
-    [SerializeField]
-    private WorldCursor cursor;
-
     private List<Entity> prefabLibrary = new List<Entity>();
 
     void Awake()
@@ -65,12 +62,12 @@ public class EntitySpawner : MonoBehaviour
 
         if (prefab != null)
         {
-            var entity = Instantiate(prefab.gameObject, cursor.Cursor.position + prefab.Jitter(), Quaternion.identity);
+            var entity = Instantiate(prefab.gameObject, WorldCursor.Instance.Cursor.position + prefab.Jitter(), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
         }
         else
         {
-            var entity = Instantiate(defaultPrefab, cursor.Cursor.position + defaultPrefab.Jitter(), Quaternion.identity);
+            var entity = Instantiate(defaultPrefab, WorldCursor.Instance.Cursor.position + defaultPrefab.Jitter(), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
         }
     }
