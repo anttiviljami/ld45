@@ -23,9 +23,12 @@ public class World : MonoBehaviour
 
     public Vector2 Size => size;
 
+    public Rect Bounds { get; private set; }
+
     void Awake()
     {
         instance = this;
+        Bounds = new Rect(Vector2.zero - size * 0.5f, size);
     }
 
     void OnDrawGizmos()

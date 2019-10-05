@@ -34,8 +34,8 @@ public class WorldCursor : MonoBehaviour
     {
         var newPosition = Cursor.position + new Vector3(amount.x, 0, amount.y) * moveSpeed;
 
-        newPosition.x = Mathf.Clamp(newPosition.x, -World.Instance.Size.x * 0.5f, World.Instance.Size.x * 0.5f);
-        newPosition.y = Mathf.Clamp(newPosition.y, -World.Instance.Size.y * 0.5f, World.Instance.Size.y * 0.5f);
+        newPosition.x = Mathf.Clamp(newPosition.x, World.Instance.Bounds.xMin, World.Instance.Bounds.xMax);
+        newPosition.z = Mathf.Clamp(newPosition.z, World.Instance.Bounds.yMin, World.Instance.Bounds.yMax);
 
         Cursor.position = newPosition;
     }
