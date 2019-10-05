@@ -9,10 +9,17 @@ public class SequenceDetector
     public const int BPM = 80; // beats per minute
     public const float BEAT_INTERVAL = 60f / (float)BPM;
     public const int SEQUENCE_LENGTH = 3;
+    public const float VOLUME_THRESHOLD = 0.15f;
+    public const float VOLUME_THRESHOLD_SAMPLES = 4;
 
+    public bool IsOverVolumeThreshold = false;
+
+    public static event Action ThresholdStart;
+    public static event Action ThresholdEnd;
     public static event Action<Note> NoteDetected;
     public static event Action<NoteSequence> NoteSequenceDetected;
-    public string[] notes;
+
+    protected List<float> volumeSequence = new List<float>();
 
     protected List<Note> currentSequence = new List<Note>();
 
@@ -20,17 +27,11 @@ public class SequenceDetector
 
     public SequenceDetector()
     {
-        notes = new[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-
-        MicrophoneFeed.ThresholdStart += OnThresholdStart;
-        MicrophoneFeed.ThresholdEnd += OnThresholdEnd;
         MicrophoneFeed.OutputAnalyzed += OnOutputAnalyzed;
     }
 
     ~SequenceDetector()
     {
-        MicrophoneFeed.ThresholdStart -= OnThresholdStart;
-        MicrophoneFeed.ThresholdEnd -= OnThresholdEnd;
         MicrophoneFeed.OutputAnalyzed -= OnOutputAnalyzed;
     }
 
@@ -46,75 +47,54 @@ public class SequenceDetector
 
     void OnOutputAnalyzed(MicrophoneFeed.MicrophoneOutput output)
     {
-        outputs.Add(output);
+        // track volume
+        volumeSequence.Add(output.volume);
+        if (volumeSequence.Count() > VOLUME_THRESHOLD_SAMPLES)
+        {
+            volumeSequence.RemoveAt(0);
+        }
+        // count average volume
+
+        if (IsOverVolumeThreshold && volumeSequence.Average() < VOLUME_THRESHOLD)
+        {
+            // flip if volume sequence goes under
+            IsOverVolumeThreshold = false;
+            ThresholdEnd?.Invoke();
+        }
+
+        if (!IsOverVolumeThreshold && volumeSequence.Average() > VOLUME_THRESHOLD)
+        {
+            // flip if volume sequence goes under
+            IsOverVolumeThreshold = true;
+            ThresholdStart?.Invoke();
+        }
+
+        var detectedNote = mapOutputsToNote(outputs);
+
+        // track output cycle if we are over volume threshold
+        if (IsOverVolumeThreshold)
+            outputs.Add(output);
+
+        Debug.Log(new
+        {
+            noteName = detectedNote.NoteName,
+            musical = pitchToMusicalNote(output.pitch),
+            volume = output.volume,
+            IsOverVolumeThreshold,
+        });
     }
 
     public void Beat()
     {
         // do nothing if no outputs are recorded yet
-        if (outputs.Count() == 0)
-            return;
-
-        // label each output with a note
-        var mostCommonNote = outputs.Select((o) =>
-            {
-                var musicalNote = pitchToMusicalNote(o.pitch);
-                var note = musicalNote != null ? notes[(int)musicalNote % 12] : "unknown";
-                return note;
-            })
-            .GroupBy(s => s)
-            .Where(g => g.Count() > 1)
-            .OrderByDescending(g => g.Count())
-            .Select(g => g.Key)
-            .First();
-
-        // map note to our special Note object
         Note detectedNote;
-        switch (mostCommonNote)
-        {
-            case "C":
-                detectedNote = new Note(Note.Name.Animals);
-                break;
-            case "C#":
-                detectedNote = new Note(Note.Name.Animals);
-                break;
-            case "D":
-                detectedNote = new Note(Note.Name.Plants);
-                break;
-            case "D#":
-                detectedNote = new Note(Note.Name.Plants);
-                break;
-            case "E":
-                detectedNote = new Note(Note.Name.Earth);
-                break;
-            case "F":
-                detectedNote = new Note(Note.Name.Earth);
-                break;
-            case "F#":
-                detectedNote = new Note(Note.Name.Earth);
-                break;
-            case "G":
-                detectedNote = new Note(Note.Name.Weather);
-                break;
-            case "G#":
-                detectedNote = new Note(Note.Name.Weather);
-                break;
-            case "A":
-                detectedNote = new Note(Note.Name.Weather);
-                break;
-            case "A#":
-                detectedNote = new Note(Note.Name.Weather);
-                break;
-            case "B":
-                detectedNote = new Note(Note.Name.Animals);
-                break;
-            default:
-                detectedNote = new Note(Note.Name.Undefined);
-                break;
-        }
+        if (outputs.Count() != 0)
+            detectedNote = mapOutputsToNote(outputs);
+        else
+            detectedNote = new Note(Note.Name.Undefined);
 
+        // push event
         NoteDetected?.Invoke(detectedNote);
-        // Debug.Log(new { mostCommonNote, detectedNote.NoteName, length = outputs.Count() });
 
         // add to sequence
         pushAndMatchSequence(detectedNote);
@@ -139,17 +119,67 @@ public class SequenceDetector
                 return; // do nothing if one of the notes is undefined
         }
 
+        // sequence was matched
         var seq = new NoteSequence(currentSequence[0], currentSequence[1], currentSequence[2]);
         NoteSequenceDetected?.Invoke(seq);
         Debug.Log(seq);
+
+        // clear the sequence
+        currentSequence.Clear();
     }
 
-    private Nullable<int> pitchToMusicalNote(float pitch)
+    private string pitchToMusicalNote(float pitch)
     {
         if (pitch == 0) // no pitch was detected
-            return null;
-
+            return "unknown";
+        var notes = new[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         var noteNum = 12 * (Mathf.Log(pitch / 440) / Mathf.Log(2));
-        return Mathf.RoundToInt(noteNum) + 69;
+        return notes[(Mathf.RoundToInt(noteNum) + 69) % 12];
+    }
+
+    private Note mapOutputsToNote(List<MicrophoneFeed.MicrophoneOutput> outputs, bool debug = false)
+    {
+        if (outputs.Count() == 0)
+            return new Note(Note.Name.Undefined);
+
+        // label each output with a note
+        var mostCommonNote = outputs
+            .Select((o) => pitchToMusicalNote(o.pitch))
+            .GroupBy(s => s)
+            .Where(g => g.Count() > 1)
+            .OrderByDescending(g => g.Count())
+            .Select(g => g.Key)
+            .FirstOrDefault();
+
+        // map note to our special Note object
+        switch (mostCommonNote)
+        {
+            case "C":
+                return new Note(Note.Name.Animals);
+            case "C#":
+                return new Note(Note.Name.Animals);
+            case "D":
+                return new Note(Note.Name.Plants);
+            case "D#":
+                return new Note(Note.Name.Plants);
+            case "E":
+                return new Note(Note.Name.Earth);
+            case "F":
+                return new Note(Note.Name.Earth);
+            case "F#":
+                return new Note(Note.Name.Earth);
+            case "G":
+                return new Note(Note.Name.Weather);
+            case "G#":
+                return new Note(Note.Name.Weather);
+            case "A":
+                return new Note(Note.Name.Weather);
+            case "A#":
+                return new Note(Note.Name.Weather);
+            case "B":
+                return new Note(Note.Name.Animals);
+            default:
+                return new Note(Note.Name.Undefined);
+        }
     }
 }

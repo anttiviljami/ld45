@@ -9,8 +9,8 @@ using System.Linq;
 public class MicrophoneFeed : MonoBehaviour
 {
     private const int SAMPLE_FREQUENCY = 44100;
-    private const int PROCESS_SAMPLE_SIZE = 8192; // this is the maximum sample size supported for GetData
-    private const float PROCESS_INTERVAL = 1f / 60f; // how often samples are processed
+    private const int PROCESS_SAMPLE_SIZE = 4096; // this is the maximum sample size supported for GetData
+    private const float PROCESS_INTERVAL = 1f / 30f; // how often samples are processed
 
     private static MicrophoneFeed instance;
     public static MicrophoneFeed Instance
@@ -27,9 +27,7 @@ public class MicrophoneFeed : MonoBehaviour
         }
     }
 
-    public static event Action ThresholdStart;
     public static event Action<MicrophoneOutput> OutputAnalyzed;
-    public static event Action ThresholdEnd;
 
     public struct MicrophoneOutput
     {
@@ -39,6 +37,7 @@ public class MicrophoneFeed : MonoBehaviour
 
     private AudioSource microphoneSource;
     private AudioClip microphoneInput;
+    private AudioMixerGroup muteMixerGroup;
 
     void Awake()
     {
@@ -48,6 +47,11 @@ public class MicrophoneFeed : MonoBehaviour
 
         microphoneSource = gameObject.AddComponent<AudioSource>();
         InvokeRepeating("ProcessMicrophoneData", PROCESS_INTERVAL, PROCESS_INTERVAL);
+
+        // route the microphone source to a special mute mixer group
+        var mixer = Resources.Load("MasterMixer") as AudioMixer;
+        muteMixerGroup = mixer.FindMatchingGroups("mute")[0];
+        microphoneSource.outputAudioMixerGroup = muteMixerGroup;
     }
 
     void ProcessMicrophoneData()
@@ -55,7 +59,16 @@ public class MicrophoneFeed : MonoBehaviour
         // gather samples from microphone
         float[] samples = new float[PROCESS_SAMPLE_SIZE];
         int micPosition = Microphone.GetPosition(null) - (PROCESS_SAMPLE_SIZE + 1);
-        microphoneInput.GetData(samples, micPosition);
+        try
+        {
+            if (!microphoneInput.GetData(samples, micPosition))
+                return; // failed
+        }
+        catch
+        {
+            return; // failed
+        }
+
 
         // create a sample clip from the sample data
         AudioClip sample = AudioClip.Create("sample", samples.Count(), 1, SAMPLE_FREQUENCY, false);

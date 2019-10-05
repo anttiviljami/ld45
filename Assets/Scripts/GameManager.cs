@@ -28,10 +28,13 @@ public class GameManager : MonoBehaviour
 
     private SequenceDetector sequenceDetector;
 
+    private AudioSource tickSound;
+
     void Awake()
     {
         instance = this;
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
+        tickSound = GetComponent<AudioSource>();
         sequenceDetector = new SequenceDetector();
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
     }
@@ -39,5 +42,6 @@ public class GameManager : MonoBehaviour
     void Beat()
     {
         sequenceDetector.Beat(); // triggers beat
+        tickSound.PlayOneShot(tickSound.clip);
     }
 }
