@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public NoteSequence recipe;
+
     private Transform tr;
 
-    private float initialPositionJitter = 0.1f;
-
     [SerializeField]
-    private float clearSpaceSpeedFactor = 1;
-
-    private const float defaultClearSpaceSpeed = 10;
+    private float initialPositionJitter = 0.1f;
 
     void Awake()
     {

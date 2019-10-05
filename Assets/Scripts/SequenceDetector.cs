@@ -6,7 +6,7 @@ using UnityEngine;
 public class SequenceDetector
 {
     public static event Action<Note> NoteDetected;
-    public static event Action<Note[]> NoteSequenceDetected;
+    public static event Action<NoteSequence> NoteSequenceDetected;
 
     public SequenceDetector()
     {
