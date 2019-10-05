@@ -18,6 +18,9 @@ public class WorldCursor : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private Rect bounds = new Rect(0, 0, 100, 100);
+
     public Transform Cursor { get; private set; }
 
     [SerializeField]
@@ -31,7 +34,18 @@ public class WorldCursor : MonoBehaviour
 
     public void Move(Vector2 amount)
     {
-        Cursor.position += new Vector3(amount.x, 0, amount.y) * moveSpeed;
-        // TODO bounds
+        var newPosition = Cursor.position + new Vector3(amount.x, 0, amount.y) * moveSpeed;
+
+        newPosition.x = Mathf.Clamp(newPosition.x, -bounds.size.x * 0.5f, bounds.size.x * 0.5f);
+        newPosition.y = Mathf.Clamp(newPosition.y, -bounds.size.y * 0.5f, bounds.size.y * 0.5f);
+
+        Cursor.position = newPosition;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        var size = new Vector3(bounds.size.x, 10, bounds.size.y);
+        Gizmos.DrawWireCube(Vector3.up * 5, size);
     }
 }
