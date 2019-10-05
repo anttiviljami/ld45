@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 935943451176750876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b87be47762e654eb891968c0aaa413c7, type: 3}
-  m_Color: {r: 0.8113208, g: 0.514008, b: 0.3099858, a: 1}
+  m_Color: {r: 0.3962264, g: 0.31212175, b: 0.31899884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,9 +91,9 @@ GameObject:
   - component: {fileID: 695044847873520938}
   - component: {fileID: 8808564298344581207}
   - component: {fileID: 819733610215520662}
-  - component: {fileID: 8519126832544609518}
+  - component: {fileID: 6869600717352984483}
   m_Layer: 0
-  m_Name: Deer 1
+  m_Name: Deer 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
     note2:
       name: 2
     note3:
-      name: 3
+      name: 1
   initialPositionJitter: 2
 --- !u!54 &819733610215520662
 Rigidbody:
@@ -150,7 +150,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &8519126832544609518
+--- !u!136 &6869600717352984483
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +160,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.2
-  m_Height: 3
+  m_Radius: 1.4
+  m_Height: 3.5
   m_Direction: 0
-  m_Center: {x: 0, y: 1.2, z: 0.5}
+  m_Center: {x: 0, y: 1.4, z: 0.5}

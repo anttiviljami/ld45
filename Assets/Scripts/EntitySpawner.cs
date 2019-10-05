@@ -37,14 +37,9 @@ public class EntitySpawner : MonoBehaviour
         // Test spawning
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (Random.value < 0.5f)
-            {
-                OnSequenceDetected(new NoteSequence(new Note(Note.Name.Animals), new Note(Note.Name.Plants), new Note(Note.Name.Weather)));
-            }
-            else
-            {
-                OnSequenceDetected(new NoteSequence(new Note(Note.Name.Animals), new Note(Note.Name.Plants), new Note(Note.Name.Earth)));
-            }
+            var prefab = prefabLibrary[Random.Range(0, prefabLibrary.Count)];
+            var entity = Instantiate(prefab.gameObject, prefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
+            entity.transform.parent = entitiesRoot;
         }
     }
 
@@ -62,12 +57,12 @@ public class EntitySpawner : MonoBehaviour
 
         if (prefab != null)
         {
-            var entity = Instantiate(prefab.gameObject, WorldCursor.Instance.Cursor.position + prefab.Jitter(), Quaternion.identity);
+            var entity = Instantiate(prefab.gameObject, prefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
         }
         else
         {
-            var entity = Instantiate(defaultPrefab, WorldCursor.Instance.Cursor.position + defaultPrefab.Jitter(), Quaternion.identity);
+            var entity = Instantiate(defaultPrefab, defaultPrefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
         }
     }

@@ -13,37 +13,50 @@ public class Entity : MonoBehaviour
 
     private bool isFalling = false;
 
+    private Rigidbody rb;
+
+    private static readonly Vector3 BOUNDS_SIZE_DEFAULT = Vector3.one * 10;
+
     void Awake()
     {
         tr = transform;
+        rb = GetComponent<Rigidbody>();
     }
 
-    public Vector3 Jitter()
+    public Vector3 JitteredPosition(Vector3 position)
     {
-        return new Vector3(
-            Random.Range(-initialPositionJitter, initialPositionJitter),
-            0,
-            Random.Range(-initialPositionJitter, initialPositionJitter)
-        );
+        var col = GetComponent<Collider>();
+        var size = col && !col.bounds.Equals(default(Bounds)) ? col.bounds.size * 1.05f : BOUNDS_SIZE_DEFAULT;
+
+        position.x += Random.Range(-initialPositionJitter, initialPositionJitter);
+        position.z += Random.Range(-initialPositionJitter, initialPositionJitter);
+
+        position.x = Mathf.Clamp(position.x, World.Instance.Bounds.xMin + size.x * 0.5f, World.Instance.Bounds.xMax - size.x * 0.5f);
+        position.z = Mathf.Clamp(position.z, World.Instance.Bounds.yMin + size.z * 0.5f, World.Instance.Bounds.yMax - size.z * 0.5f);
+
+        return position;
     }
 
     private void Update()
     {
-        if (!isFalling && !World.Instance.Bounds.Contains(new Vector2(tr.position.x, tr.position.z)))
+        if (rb)
         {
-            isFalling = true;
-            var rb = GetComponent<Rigidbody>();
-            rb.useGravity = true;
-            rb.drag = Mathf.Clamp(rb.drag * 0.5f, 0, 0.25f);
-            rb.detectCollisions = false;
-            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
-            rb.AddTorque(Vector3.forward * Random.Range(-10, 10));
-        }
-        else
-        {
-            if (tr.position.y < -300)
+            if (!isFalling && !World.Instance.Bounds.Contains(new Vector2(tr.position.x, tr.position.z)))
             {
-                Destroy(gameObject);
+                isFalling = true;
+                var rb = GetComponent<Rigidbody>();
+                rb.useGravity = true;
+                rb.drag = Mathf.Clamp(rb.drag * 0.5f, 0, 0.25f);
+                rb.detectCollisions = false;
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+                rb.AddTorque(Vector3.forward * Random.Range(-10, 10));
+            }
+            else
+            {
+                if (tr.position.y < -300)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
