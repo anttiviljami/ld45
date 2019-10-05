@@ -11,6 +11,8 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private float initialPositionJitter = 0.1f;
 
+    private bool isFalling = false;
+
     void Awake()
     {
         tr = transform;
@@ -25,5 +27,25 @@ public class Entity : MonoBehaviour
         );
     }
 
+    private void Update()
+    {
+        if (!isFalling && !World.Instance.Bounds.Contains(new Vector2(tr.position.x, tr.position.z)))
+        {
+            isFalling = true;
+            var rb = GetComponent<Rigidbody>();
+            rb.useGravity = true;
+            rb.drag = Mathf.Clamp(rb.drag * 0.5f, 0, 0.25f);
+            rb.detectCollisions = false;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+            rb.AddTorque(Vector3.forward * Random.Range(-10, 10));
+        }
+        else
+        {
+            if (tr.position.y < -300)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
     // TODO fall of edge
 }
