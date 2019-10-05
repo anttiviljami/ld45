@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("Game manager init");
         instance = this;
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
         sequenceDetector = new SequenceDetector();
