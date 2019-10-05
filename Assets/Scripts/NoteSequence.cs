@@ -9,6 +9,13 @@ public struct NoteSequence : IEqualityComparer<NoteSequence>
     public Note note2;
     public Note note3;
 
+    public NoteSequence(Note.Name noteName1, Note.Name noteName2, Note.Name noteName3)
+    {
+        note1 = new Note(noteName1);
+        note2 = new Note(noteName2);
+        note3 = new Note(noteName3);
+    }
+
     public NoteSequence(Note _note1, Note _note2, Note _note3)
     {
         note1 = _note1;

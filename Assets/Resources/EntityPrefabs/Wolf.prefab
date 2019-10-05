@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
+  - component: {fileID: 9049980579483027741}
+  - component: {fileID: 378078565910102988}
   m_Layer: 0
-  m_Name: deer
+  m_Name: wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 935943451176750876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
   m_RootOrder: 0
@@ -69,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b87be47762e654eb891968c0aaa413c7, type: 3}
-  m_Color: {r: 0.6320754, g: 0.587819, b: 0.5575382, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9fda0c258f78c4fa6b34b4f7acf3d79e, type: 3}
+  m_Color: {r: 0.8113208, g: 0.514008, b: 0.3099858, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -80,6 +82,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9049980579483027741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935943451176750876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2626fb77645c18b48bf575df11616c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: {r: 0.8113208, g: 0.73408526, b: 0.6697223, a: 1}
+  earth: {r: 0.2924528, g: 0.24852079, b: 0.20554467, a: 1}
+  weather: {r: 0.7168921, g: 0.80676395, b: 0.8490566, a: 1}
+  building: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  plant: {r: 0.745283, g: 0.64891285, b: 0.40428087, a: 1}
+--- !u!114 &378078565910102988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935943451176750876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 1.2
+  earth: 1
+  weather: 1
+  building: 1
+  plant: 0.75
 --- !u!1 &8088521700814295287
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,9 +127,9 @@ GameObject:
   - component: {fileID: 695044847873520938}
   - component: {fileID: 8808564298344581207}
   - component: {fileID: 819733610215520662}
-  - component: {fileID: 6869600717352984483}
+  - component: {fileID: 8519126832544609518}
   m_Layer: 0
-  m_Name: Deer 2
+  m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,9 +166,9 @@ MonoBehaviour:
     note1:
       name: 1
     note2:
-      name: 2
+      name: 1
     note3:
-      name: 4
+      name: 0
   initialPositionJitter: 2
 --- !u!54 &819733610215520662
 Rigidbody:
@@ -150,7 +186,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &6869600717352984483
+--- !u!136 &8519126832544609518
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +196,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 2.5
+  m_Radius: 1.3
+  m_Height: 3.5
   m_Direction: 0
-  m_Center: {x: 0, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 1.3, z: 0.75}

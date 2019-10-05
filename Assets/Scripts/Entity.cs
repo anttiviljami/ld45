@@ -17,10 +17,17 @@ public class Entity : MonoBehaviour
 
     private static readonly Vector3 BOUNDS_SIZE_DEFAULT = Vector3.one * 10;
 
+    public NoteSequence NoteSequence { get; private set; }
+
     void Awake()
     {
         tr = transform;
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void InitializeWithNoteSequence(NoteSequence sequence)
+    {
+        NoteSequence = sequence;
     }
 
     public Vector3 JitteredPosition(Vector3 position)

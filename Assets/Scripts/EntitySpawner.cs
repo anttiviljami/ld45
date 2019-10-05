@@ -37,33 +37,52 @@ public class EntitySpawner : MonoBehaviour
         // Test spawning
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            var prefab = prefabLibrary[Random.Range(0, prefabLibrary.Count)];
-            var entity = Instantiate(prefab.gameObject, prefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
-            entity.transform.parent = entitiesRoot;
+            var note1 = (Note.Name)(Random.Range(1, 6));
+            var note2 = (Note.Name)(Random.Range(1, 6));
+            var note3 = (Note.Name)(Random.Range(1, 6));
+
+            OnSequenceDetected(new NoteSequence(note1, note2, note3));
         }
     }
 
     private void OnSequenceDetected(NoteSequence noteSequence)
     {
-        Entity prefab = null;
+        List<Entity> prefabs = new List<Entity>();
 
         for (int i = 0; i < prefabLibrary.Count; i++)
         {
             if (prefabLibrary[i].recipe.Equals(noteSequence))
             {
-                prefab = prefabLibrary[i];
+                prefabs.Add(prefabLibrary[i]);
             }
         }
 
-        if (prefab != null)
+        if (prefabs.Count == 0)
         {
-            var entity = Instantiate(prefab.gameObject, prefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
+            // Loose matching to entities with last note of undefined
+            for (int i = 0; i < prefabLibrary.Count; i++)
+            {
+                if (prefabLibrary[i].recipe.note3.NoteName == Note.Name.Undefined
+                    && prefabLibrary[i].recipe.note1.NoteName == noteSequence.note1.NoteName 
+                    && prefabLibrary[i].recipe.note2.NoteName == noteSequence.note2.NoteName)
+                {
+                    prefabs.Add(prefabLibrary[i]);
+                }
+            }
+        }
+
+        if (prefabs.Count > 0)
+        {
+            var prefab = prefabs[Random.Range(0, prefabs.Count)];
+            var entity = Instantiate(prefabs[0], prefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
+            entity.InitializeWithNoteSequence(noteSequence);
         }
         else
         {
             var entity = Instantiate(defaultPrefab, defaultPrefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
+            entity.InitializeWithNoteSequence(noteSequence);
         }
     }
 }
