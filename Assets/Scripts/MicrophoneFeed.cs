@@ -59,17 +59,19 @@ public class MicrophoneFeed : MonoBehaviour
         // gather samples from microphone
         float[] samples = new float[PROCESS_SAMPLE_SIZE];
         int micPosition = Microphone.GetPosition(null) - (PROCESS_SAMPLE_SIZE + 1);
-        try
+
+        if (micPosition >= 0)
         {
             if (!microphoneInput.GetData(samples, micPosition))
                 return; // failed
+
+            Debug.Log("micPosition: " + micPosition);
         }
-        catch
+        else
         {
             return; // failed
         }
-
-
+        
         // create a sample clip from the sample data
         AudioClip sample = AudioClip.Create("sample", samples.Count(), 1, SAMPLE_FREQUENCY, false);
         sample.SetData(samples, 0);
