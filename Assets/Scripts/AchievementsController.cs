@@ -64,7 +64,7 @@ public class AchievementsController
         TriggerAchivement(Achievement.LetThereBeLight);
 
         if (noteSequence.note1.NoteName == Note.Name.Earth
-        && noteSequence.note2.NoteName == Note.Name.Plants
+        && noteSequence.note2.NoteName == Note.Name.Weather
         && noteSequence.note3.NoteName == Note.Name.Weather)
         {
             TriggerAchivement(Achievement.Vainamoinen);

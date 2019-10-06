@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1641589696672085213}
   - component: {fileID: 719430034116619464}
+  - component: {fileID: 7815291784352888930}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -80,6 +81,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7815291784352888930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726847737654361636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 0.8
+  earth: 1
+  weather: 1.2
+  building: 1
+  plant: 1.4
 --- !u!1 &935943451176750876
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
+  - component: {fileID: 8458715697679058201}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -160,6 +179,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8458715697679058201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935943451176750876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 0.8
+  earth: 1
+  weather: 1.2
+  building: 1
+  plant: 1.4
 --- !u!1 &1309909530967663238
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957104744903203856}
   - component: {fileID: 3695121912521579761}
+  - component: {fileID: 4710701354850492603}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -240,6 +277,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4710701354850492603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309909530967663238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 0.8
+  earth: 1
+  weather: 1.2
+  building: 1
+  plant: 1.4
 --- !u!1 &3897473536201995771
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297212802842460801}
   - component: {fileID: 3663561548074917789}
+  - component: {fileID: 4676795067841745735}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -320,6 +375,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4676795067841745735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897473536201995771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 0.8
+  earth: 1
+  weather: 1.2
+  building: 1
+  plant: 1.4
 --- !u!1 &4473096909937268915
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9004487505555856407}
   - component: {fileID: 1307934938428216786}
+  - component: {fileID: 4732758637275813649}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -400,6 +473,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4732758637275813649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473096909937268915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 0.8
+  earth: 1
+  weather: 1.2
+  building: 1
+  plant: 1.4
 --- !u!1 &6666216953969377187
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 448668886555136105}
   - component: {fileID: 7020380493506504629}
+  - component: {fileID: 89428883219086773}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -480,6 +571,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &89428883219086773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666216953969377187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: 0.8
+  earth: 1
+  weather: 1.2
+  building: 1
+  plant: 1.4
 --- !u!1 &8088521700814295287
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,5 +643,5 @@ MonoBehaviour:
     note2:
       name: 2
     note3:
-      name: 2
+      name: 0
   initialPositionJitter: 3
