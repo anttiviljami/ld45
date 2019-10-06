@@ -11,7 +11,6 @@ public class HostileBehaviour : MonoBehaviour
 
     [SerializeField]
     private float coolOffAfterKill = 30;
-    private float nextPossibleChase;
 
     [SerializeField]
     private float damageInterval = 2;
@@ -22,6 +21,8 @@ public class HostileBehaviour : MonoBehaviour
     [SerializeField]
     private float attackRange = 2;
 
+    private float nextPossibleAttack;
+
     void Awake()
     {
         attract = GetComponent<EntityAttractBehaviour>();
@@ -30,7 +31,7 @@ public class HostileBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (attract.Target && attract.Target is LivingEntity)
+        if (Time.time >= nextPossibleAttack && attract.Target && attract.Target is LivingEntity)
         {
             if (Vector3.SqrMagnitude(entity.Position - attract.Target.Position) <= attackRange * attackRange)
             {
@@ -41,11 +42,15 @@ public class HostileBehaviour : MonoBehaviour
 
     public void Attack(LivingEntity target)
     {
+        AttackEffect.Attack(entity.Position, target.Position);
+
         target.TakeDamage(damage);
+
         if (!target.IsAlive)
         {
-            nextPossibleChase = Time.time + coolOffAfterKill;
+            attract.moveStartLimit = Time.time + coolOffAfterKill;
         }
-        attract.moveStartLimit = Time.time + damageInterval;
+
+        nextPossibleAttack = Time.time + damageInterval;
     }
 }
