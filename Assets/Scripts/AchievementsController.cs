@@ -41,7 +41,7 @@ public class AchievementsController
         { Achievement.ApexPredator, "Apex predator" },
         { Achievement.WolfAttack, "Wolf Attack" },
         { Achievement.Tornado, "Tornado season" },
-        { Achievement.OffTheEdge, "Fall off the edge" },
+        { Achievement.OffTheEdge, "Edge of the World" },
         { Achievement.Murder, "A murder most foul" },
         { Achievement.Vainamoinen, "Vainamoinen" },
         { Achievement.FourSeasons, "Four seasons" },
