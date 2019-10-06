@@ -124,7 +124,7 @@ public class OnboardingSequenceController : MonoBehaviour
                 break;
 
             case OnboardingState.Instruction2:
-                state = OnboardingState.Finished;
+                state = OnboardingState.Instruction3;
                 LeanTween
                     .value(0f, 1f, .5f)
                     .setDelay(4f)

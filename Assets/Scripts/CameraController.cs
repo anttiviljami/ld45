@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera targetCamera = default;
 
     [SerializeField]
-    private float minFov = 30;
+    private float minFov = 8;
 
     [SerializeField]
     private float maxFov = 60;
