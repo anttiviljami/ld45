@@ -55,13 +55,16 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        // send running state change
+        this.IsRunning = true;
+    }
+
+    void Init()
+    {
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
         microphoneFeed.IsRecording = true; // start recording
         sequenceDetector = new SequenceDetector();
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
-
-        // send running state change
-        this.IsRunning = true;
     }
 
     void Beat()
