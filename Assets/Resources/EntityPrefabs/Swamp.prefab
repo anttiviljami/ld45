@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1641589696672085213}
   - component: {fileID: 719430034116619464}
   m_Layer: 0
-  m_Name: Desert (2)
+  m_Name: swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726847737654361636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.28, y: 0, z: -1.58}
+  m_LocalPosition: {x: -2.15, y: 0, z: -1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1c7ff4ca3ff04429bae6de2bc000265, type: 3}
-  m_Color: {r: 0.735849, g: 0.72251296, b: 0.6213065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a7b0df8a197c4a9d85493c06198b8a2, type: 3}
+  m_Color: {r: 0.018378438, g: 0.5566038, b: 0.45337468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
   m_Layer: 0
-  m_Name: Desert
+  m_Name: swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +149,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1c7ff4ca3ff04429bae6de2bc000265, type: 3}
-  m_Color: {r: 0.735849, g: 0.72251296, b: 0.6213065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a7b0df8a197c4a9d85493c06198b8a2, type: 3}
+  m_Color: {r: 0.018378438, g: 0.5566038, b: 0.45337468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 957104744903203856}
   - component: {fileID: 3695121912521579761}
   m_Layer: 0
-  m_Name: Desert (1)
+  m_Name: swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309909530967663238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.63, y: 0, z: 1.38}
+  m_LocalPosition: {x: -1.13, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
@@ -229,8 +229,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1c7ff4ca3ff04429bae6de2bc000265, type: 3}
-  m_Color: {r: 0.735849, g: 0.72251296, b: 0.6213065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a7b0df8a197c4a9d85493c06198b8a2, type: 3}
+  m_Color: {r: 0.018378438, g: 0.5566038, b: 0.45337468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 297212802842460801}
   - component: {fileID: 3663561548074917789}
   m_Layer: 0
-  m_Name: Desert (5)
+  m_Name: Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3897473536201995771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.82, y: 0, z: 3.38}
+  m_LocalPosition: {x: 1.47, y: 0, z: 2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
@@ -309,8 +309,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1c7ff4ca3ff04429bae6de2bc000265, type: 3}
-  m_Color: {r: 0.735849, g: 0.72251296, b: 0.6213065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a7b0df8a197c4a9d85493c06198b8a2, type: 3}
+  m_Color: {r: 0.018378438, g: 0.5566038, b: 0.45337468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 9004487505555856407}
   - component: {fileID: 1307934938428216786}
   m_Layer: 0
-  m_Name: Desert (3)
+  m_Name: Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4473096909937268915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.63, y: 0, z: -2.22}
+  m_LocalPosition: {x: 2.2, y: 0, z: -1.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
@@ -389,8 +389,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1c7ff4ca3ff04429bae6de2bc000265, type: 3}
-  m_Color: {r: 0.735849, g: 0.72251296, b: 0.6213065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a7b0df8a197c4a9d85493c06198b8a2, type: 3}
+  m_Color: {r: 0.018378438, g: 0.5566038, b: 0.45337468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 448668886555136105}
   - component: {fileID: 7020380493506504629}
   m_Layer: 0
-  m_Name: Desert (4)
+  m_Name: Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6666216953969377187}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.71, y: 0, z: 1.04}
+  m_LocalPosition: {x: 2.83, y: 0, z: 0.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
@@ -469,8 +469,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1c7ff4ca3ff04429bae6de2bc000265, type: 3}
-  m_Color: {r: 0.735849, g: 0.72251296, b: 0.6213065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a7b0df8a197c4a9d85493c06198b8a2, type: 3}
+  m_Color: {r: 0.018378438, g: 0.5566038, b: 0.45337468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 695044847873520938}
   - component: {fileID: 8808564298344581207}
   m_Layer: 0
-  m_Name: Desert
+  m_Name: Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,5 +535,5 @@ MonoBehaviour:
     note2:
       name: 2
     note3:
-      name: 4
-  initialPositionJitter: 4
+      name: 8
+  initialPositionJitter: 3

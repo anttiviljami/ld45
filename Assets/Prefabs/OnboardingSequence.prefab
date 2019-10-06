@@ -507,6 +507,7 @@ MonoBehaviour:
   credits: {fileID: 3381390835207736458}
   instruction1: {fileID: 6299739592382125441}
   instruction2: {fileID: 6983849507575503294}
+  instruction3: {fileID: 875033120046407033}
   state: 0
 --- !u!1 &3381390835207736458
 GameObject:

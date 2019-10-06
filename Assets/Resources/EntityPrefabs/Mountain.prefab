@@ -128,11 +128,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe:
     note1:
-      name: 3
+      name: 4
     note2:
-      name: 3
+      name: 4
     note3:
-      name: 3
+      name: 4
   initialPositionJitter: 4
   maxTimeToSleep: 2
 --- !u!54 &819733610215520662
@@ -147,7 +147,7 @@ Rigidbody:
   m_Drag: 8
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0

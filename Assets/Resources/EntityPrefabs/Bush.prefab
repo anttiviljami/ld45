@@ -130,7 +130,7 @@ MonoBehaviour:
     note1:
       name: 2
     note2:
-      name: 4
+      name: 8
     note3:
       name: 1
   initialPositionJitter: 1

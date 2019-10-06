@@ -531,9 +531,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe:
     note1:
-      name: 3
+      name: 4
     note2:
       name: 2
     note3:
-      name: 1
+      name: 2
   initialPositionJitter: 3

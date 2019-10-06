@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
-  - component: {fileID: 9049980579483027741}
-  - component: {fileID: 378078565910102988}
   m_Layer: 0
   m_Name: deer
   m_TagString: Untagged
@@ -82,40 +80,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9049980579483027741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935943451176750876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2626fb77645c18b48bf575df11616c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animal: {r: 0.7924528, g: 0.54172, b: 0.3476326, a: 1}
-  earth: {r: 0.46226418, g: 0.44374976, b: 0.4121129, a: 1}
-  weather: {r: 0.7812834, g: 0.87052834, b: 0.9150943, a: 1}
-  building: {r: 0.6981132, g: 0.6618903, b: 0.6618903, a: 1}
-  plant: {r: 0.8965321, g: 0.9528302, b: 0.6966447, a: 1}
---- !u!114 &378078565910102988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935943451176750876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2c5342a18829a4e9edca5cc3bb330b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animal: 1
-  earth: 1.2
-  weather: 0.9
-  building: 1
-  plant: 0.75
 --- !u!1 &8088521700814295287
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +134,7 @@ MonoBehaviour:
     note2:
       name: 2
     note3:
-      name: 0
+      name: 1
   initialPositionJitter: 2
   speed: 1
   hitPoints: 5
