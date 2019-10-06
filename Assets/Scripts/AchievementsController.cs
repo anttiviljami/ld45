@@ -27,6 +27,7 @@ public class AchievementsController
     public enum Achievement
     {
         LetThereBeLight,
+        ApexPredator,
         WolfAttack,
         OffTheEdge,
         Murder,
@@ -37,6 +38,7 @@ public class AchievementsController
 
     public Dictionary<Achievement, string> achievements = new Dictionary<Achievement, string>() {
         { Achievement.LetThereBeLight, "Let there be light" },
+        { Achievement.ApexPredator, "Apex predator" },
         { Achievement.WolfAttack, "Wolf Attack" },
         { Achievement.Tornado, "Tornado season" },
         { Achievement.OffTheEdge, "Fall off the edge" },
@@ -71,6 +73,13 @@ public class AchievementsController
     public void OnNoteSequenceDetected(NoteSequence noteSequence)
     {
         TriggerAchivement(Achievement.LetThereBeLight);
+
+        // check human
+        if (noteSequence.note1.NoteName == Note.Name.Animals
+        && noteSequence.note2.NoteName == Note.Name.Animals)
+        {
+            TriggerAchivement(Achievement.ApexPredator);
+        }
 
         // check swamp
         if (noteSequence.note1.NoteName == Note.Name.Earth
