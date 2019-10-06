@@ -136,6 +136,6 @@ public class MicrophoneFeed : MonoBehaviour
         var output = new MicrophoneOutput();
         output.volume = volume;
         output.pitch = pitch;
-        OutputAnalyzed(output);
+        OutputAnalyzed?.Invoke(output);
     }
 }
