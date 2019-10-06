@@ -43,7 +43,10 @@ public class MenuManager : MonoBehaviour
     public void OnRunningStateChanged(bool isRunning)
     {
         Debug.Log(isRunning);
-        overlay.SetActive(!isRunning);
+        if (overlay != null)
+        {
+            overlay.SetActive(!isRunning);
+        }
     }
 
     public void SetMicSensitivity(float sensitivity)

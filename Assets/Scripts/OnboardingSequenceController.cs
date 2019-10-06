@@ -75,7 +75,7 @@ public class OnboardingSequenceController : MonoBehaviour
             case OnboardingState.TitleScreenIn:
                 state = OnboardingState.CreditsIn;
                 LeanTween
-                    .value(0f, 1f, .5f)
+                    .value(gameObject, 0f, 1f, .5f)
                     .setDelay(.5f)
                     .setOnUpdate(value => this.title.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());
@@ -84,7 +84,7 @@ public class OnboardingSequenceController : MonoBehaviour
             case OnboardingState.CreditsIn:
                 state = OnboardingState.FadeFromBlack;
                 LeanTween
-                    .value(0f, 1f, .5f)
+                    .value(gameObject, 0f, 1f, .5f)
                     .setDelay(1f)
                     .setOnUpdate(value => this.credits.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());
@@ -93,7 +93,7 @@ public class OnboardingSequenceController : MonoBehaviour
             case OnboardingState.FadeFromBlack:
                 state = OnboardingState.TitleScreenOut;
                 LeanTween
-                    .value(1f, 0f, 4f)
+                    .value(gameObject, 1f, 0f, 4f)
                     .setDelay(5f)
                     .setOnUpdate(value => this.overlay.GetComponent<Image>().color = new Color(0f, 0f, 0f, value))
                     .setOnComplete(() => nextState());
@@ -102,22 +102,22 @@ public class OnboardingSequenceController : MonoBehaviour
             case OnboardingState.TitleScreenOut:
                 state = OnboardingState.Instruction1;
                 LeanTween
-                    .value(1f, 0f, 2f)
+                    .value(gameObject, 1f, 0f, 2f)
                     .setOnUpdate(value => this.title.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());
                 LeanTween
-                    .value(1f, 0f, 2f)
+                    .value(gameObject, 1f, 0f, 2f)
                     .setOnUpdate(value => this.credits.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
                 break;
 
             case OnboardingState.Instruction1:
                 state = OnboardingState.Instruction2;
                 LeanTween
-                    .value(0f, 1f, .5f)
+                    .value(gameObject, 0f, 1f, .5f)
                     .setDelay(4f)
                     .setOnUpdate(value => this.instruction1.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
                 LeanTween
-                    .value(1f, 0f, .5f)
+                    .value(gameObject, 1f, 0f, .5f)
                     .setDelay(10f)
                     .setOnUpdate(value => this.instruction1.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());
@@ -126,11 +126,11 @@ public class OnboardingSequenceController : MonoBehaviour
             case OnboardingState.Instruction2:
                 state = OnboardingState.Instruction3;
                 LeanTween
-                    .value(0f, 1f, .5f)
+                    .value(gameObject, 0f, 1f, .5f)
                     .setDelay(4f)
                     .setOnUpdate(value => this.instruction2.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
                 LeanTween
-                    .value(1f, 0f, .5f)
+                    .value(gameObject, 1f, 0f, .5f)
                     .setDelay(10f)
                     .setOnUpdate(value => this.instruction2.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());
@@ -139,11 +139,11 @@ public class OnboardingSequenceController : MonoBehaviour
             case OnboardingState.Instruction3:
                 state = OnboardingState.Finished;
                 LeanTween
-                    .value(0f, 1f, .5f)
+                    .value(gameObject, 0f, 1f, .5f)
                     .setDelay(4f)
                     .setOnUpdate(value => this.instruction3.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
                 LeanTween
-                    .value(1f, 0f, .5f)
+                    .value(gameObject, 1f, 0f, .5f)
                     .setDelay(10f)
                     .setOnUpdate(value => this.instruction3.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());

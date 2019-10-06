@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
         // send running state change
         this.IsRunning = true;
 
-        GameReset?.Invoke();
         Onboard();
         Invoke("StartGameLoop", 7f);
     }
@@ -125,7 +124,10 @@ public class GameManager : MonoBehaviour
     {
         this.IsRunning = true;
         GameReset?.Invoke();
-        Onboard();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+        );
+
     }
 
     public void ExitGame()
