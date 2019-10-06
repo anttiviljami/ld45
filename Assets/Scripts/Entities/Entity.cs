@@ -75,8 +75,9 @@ public class Entity : MonoBehaviour
             }
             else
             {
-                if (tr.position.y < -300)
+                if (tr.position.y < -100)
                 {
+                    AchievementsController.Instance.TriggerAchivement(AchievementsController.Achievement.OffTheEdge);
                     Destroy(gameObject);
                 }
             }

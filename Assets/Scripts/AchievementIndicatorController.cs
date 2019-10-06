@@ -20,10 +20,14 @@ public class AchievementIndicatorController : MonoBehaviour
     void IndicateAchievement(AchievementsController.Achievement achievement)
     {
         achievementText.GetComponent<TextMeshProUGUI>().text = "Achievement unlocked!\n \"" + achievementsController.achievements[achievement] + "\"";
+        this.achievementText.GetComponent<TextMeshProUGUI>().color = Color.white;
+        Invoke("FadeOut", 3f);
+    }
+
+    private void FadeOut()
+    {
         LeanTween
-            .value(gameObject, 1f, 0f, .5f)
-            .setDelay(3f)
-            .setOnUpdate(value => this.achievementText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
-            .setDestroyOnComplete(false);
+            .value(achievementText, 1f, 0f, .5f)
+            .setOnUpdate(value => this.achievementText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
     }
 }

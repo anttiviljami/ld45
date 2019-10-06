@@ -37,6 +37,7 @@ public class AchievementsController
         { Achievement.LetThereBeLight, "Let there be light" },
         { Achievement.WolfAttack, "Wolf Attack" },
         { Achievement.OffTheEdge, "Fall off the edge" },
+        { Achievement.Vainamoinen, "Murder most foul" },
         { Achievement.Vainamoinen, "Vainamoinen" },
         { Achievement.FourSeasons, "Four seasons" },
     };
