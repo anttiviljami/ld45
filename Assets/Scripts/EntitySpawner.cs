@@ -40,6 +40,7 @@ public class EntitySpawner : MonoBehaviour
         prefabLibrary.AddRange(Resources.LoadAll<Entity>("EntityPrefabs"));
     }
 
+#if UNITY_EDITOR
     void Update()
     {
         // Test spawning
@@ -59,7 +60,24 @@ public class EntitySpawner : MonoBehaviour
 
             OnSequenceDetected(new NoteSequence(note1, note2, note3));
         }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            var note1 = Note.Name.Weather;
+            var note2 = Note.Name.Earth;
+            var note3 = Note.Name.Animals;
+
+            OnSequenceDetected(new NoteSequence(note1, note2, note3));
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            var note1 = Note.Name.Weather;
+            var note2 = Note.Name.Earth;
+            var note3 = Note.Name.Earth;
+
+            OnSequenceDetected(new NoteSequence(note1, note2, note3));
+        }
     }
+#endif
 
     private void ChangeSeason(Note.Name forNote)
     {

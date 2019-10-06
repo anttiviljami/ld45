@@ -14,6 +14,8 @@ public enum Season
 
 public class SeasonManager : MonoBehaviour
 {
+    public static event System.Action<Season> SeasonChanged;
+
     private static SeasonManager instance;
     public static SeasonManager Instance
     {
@@ -90,6 +92,8 @@ public class SeasonManager : MonoBehaviour
                 });
 
             groundRenderer.material = materials[newSeason];
+
+            SeasonChanged?.Invoke(CurrentSeason);
         }
     }
 
