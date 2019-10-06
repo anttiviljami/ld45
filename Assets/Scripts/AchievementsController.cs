@@ -29,7 +29,7 @@ public class AchievementsController
         LetThereBeLight,
         WolfAttack,
         OffTheEdge,
-        Lightning,
+        Vainamoinen,
         FourSeasons,
     }
 
@@ -37,7 +37,7 @@ public class AchievementsController
         { Achievement.LetThereBeLight, "Let there be light" },
         { Achievement.WolfAttack, "Wolf Attack" },
         { Achievement.OffTheEdge, "Fall off the edge" },
-        { Achievement.Lightning, "Lightning strike" },
+        { Achievement.Vainamoinen, "Vainamoinen" },
         { Achievement.FourSeasons, "Four seasons" },
     };
 
@@ -47,8 +47,11 @@ public class AchievementsController
 
     public void TriggerAchivement(Achievement achievement)
     {
-        triggeredAchievements.Add(achievement);
-        AchievementTriggered?.Invoke(achievement);
+        if (!IsAchieved(achievement))
+        {
+            triggeredAchievements.Add(achievement);
+            AchievementTriggered?.Invoke(achievement);
+        }
     }
 
     public bool IsAchieved(Achievement achievement)
@@ -56,8 +59,15 @@ public class AchievementsController
         return triggeredAchievements.Contains(achievement);
     }
 
-    public void OnNoteSequenceDetected(NoteSequence _)
+    public void OnNoteSequenceDetected(NoteSequence noteSequence)
     {
         TriggerAchivement(Achievement.LetThereBeLight);
+
+        if (noteSequence.note1.NoteName == Note.Name.Earth
+        && noteSequence.note2.NoteName == Note.Name.Plants
+        && noteSequence.note3.NoteName == Note.Name.Weather)
+        {
+            TriggerAchivement(Achievement.Vainamoinen);
+        }
     }
 }

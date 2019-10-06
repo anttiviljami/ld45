@@ -72,6 +72,7 @@ public class OnboardingSequenceController : MonoBehaviour
                 this.instruction1.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0f);
                 this.instruction2.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0f);
                 this.instruction3.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0f);
+                this.instruction4.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0f);
                 timer = 0;
                 nextState();
                 break;
