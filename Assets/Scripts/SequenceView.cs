@@ -62,11 +62,16 @@ public class SequenceView : MonoBehaviour
                 break;
         }
 
+        var cs = GetComponentInParent<Canvas>();
+
         // set to parent
-        block.GetComponent<RectTransform>().SetParent(transform);
+        var btf = block.GetComponent<RectTransform>();
+        btf.SetParent(transform);
 
         var tf = GetComponent<RectTransform>();
-        block.transform.localPosition = new Vector2(75, -tf.rect.height / 2);
+        block.transform.localPosition = new Vector2(150, -100);
+        block.transform.localScale = Vector3.one;
+
         block.SetActive(true);
 
         // keep track of block
@@ -76,7 +81,7 @@ public class SequenceView : MonoBehaviour
         for (int i = 1; i < noteBlocks.Count; i++)
         {
             var noteBlock = noteBlocks[i];
-            noteBlock.transform.Translate(new Vector2(-150, 0));
+            noteBlock.transform.Translate(new Vector2(cs.scaleFactor * -150, 0));
             var img = noteBlock.GetComponent<Image>();
             var color = img.color;
 

@@ -28,13 +28,14 @@ public class GameManager : MonoBehaviour
 
     private SequenceDetector sequenceDetector;
 
-    private AudioSource tickSound;
+    private bool IsRunning = true; // pause / unpause
+    private bool IsRecording = true; // stop recording
 
     void Awake()
     {
         instance = this;
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
-        tickSound = GetComponent<AudioSource>();
+        microphoneFeed.IsRecording = true; // start recording
         sequenceDetector = new SequenceDetector();
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
     }
@@ -42,7 +43,6 @@ public class GameManager : MonoBehaviour
     void Beat()
     {
         sequenceDetector.Beat(); // triggers beat
-        tickSound.PlayOneShot(tickSound.clip);
     }
 
     private void Update()
@@ -50,7 +50,18 @@ public class GameManager : MonoBehaviour
         // Esc maps to back button on Android
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            // TODO: Open Menu
             Application.Quit();
+        }
+    }
+
+    public void ToggleMenu()
+    {
+        Debug.Log("TOGGLE MENU");
+        IsRunning = !IsRunning;
+        if (!IsRunning)
+        {
+            microphoneFeed.IsRecording = false;
         }
     }
 }

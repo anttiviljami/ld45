@@ -39,6 +39,8 @@ public class MicrophoneFeed : MonoBehaviour
     private AudioClip microphoneInput;
     private AudioMixerGroup muteMixerGroup;
 
+    public bool IsRecording { get; set; }
+
     void Awake()
     {
         // init microphone (use first microphone available)
@@ -52,24 +54,25 @@ public class MicrophoneFeed : MonoBehaviour
         var mixer = Resources.Load("MasterMixer") as AudioMixer;
         muteMixerGroup = mixer.FindMatchingGroups("mute")[0];
         microphoneSource.outputAudioMixerGroup = muteMixerGroup;
+
+        // start recording
+        IsRecording = true;
     }
 
     void ProcessMicrophoneData()
     {
+        if (!IsRecording) return; // do nothing if we are not supposed to record
+
         // gather samples from microphone
         float[] samples = new float[PROCESS_SAMPLE_SIZE];
         int micPosition = Microphone.GetPosition(null) - (PROCESS_SAMPLE_SIZE + 1);
 
         if (micPosition >= 0)
         {
-            if (!microphoneInput.GetData(samples, micPosition))
-                return; // failed
+            if (!microphoneInput.GetData(samples, micPosition)) return; // failed
         }
-        else
-        {
-            return; // failed
-        }
-        
+        else return; // failed
+
         // create a sample clip from the sample data
         AudioClip sample = AudioClip.Create("sample", samples.Count(), 1, SAMPLE_FREQUENCY, false);
         sample.SetData(samples, 0);
