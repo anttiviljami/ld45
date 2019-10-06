@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
   m_Layer: 0
-  m_Name: bear
+  m_Name: cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 935943451176750876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
   m_RootOrder: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fbc580b8b1c7a456d9784e3fecfe5c53, type: 3}
-  m_Color: {r: 0.6132076, g: 0.37318087, b: 0.08966714, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a3657fa05247d4a109d620f0405e2084, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.45490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -89,13 +89,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695044847873520938}
-  - component: {fileID: 5339167464910487463}
+  - component: {fileID: 8060832809443772961}
   - component: {fileID: 819733610215520662}
-  - component: {fileID: 8519126832544609518}
-  - component: {fileID: 946324348381420061}
-  - component: {fileID: 1237742068787717027}
   m_Layer: 0
-  m_Name: Bear
+  m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +113,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5339167464910487463
+--- !u!114 &8060832809443772961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,18 +127,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe:
     note1:
-      name: 1
-    note2:
       name: 4
-    note3:
+    note2:
       name: 1
+    note3:
+      name: 4
   initialPositionJitter: 2
-  speed: 1
+  speed: 0.5
   hitPoints: 5
   deathEffect: {fileID: 1121372064660149824, guid: 6991d153e28df4431877a97b24864cbc,
     type: 3}
   flipSpriteWhenTurning: {fileID: 6025346166704000016}
-  fallSpriteWhenDieing: {fileID: 6025346166704000016}
+  fallSpriteWhenDieing: {fileID: 0}
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,7 +147,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8088521700814295287}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: 1
   m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -158,47 +155,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &8519126832544609518
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.3
-  m_Height: 3.5
-  m_Direction: 0
-  m_Center: {x: 0, y: 1.3, z: 0.75}
---- !u!114 &946324348381420061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1237742068787717027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7eb6588c1ca4f469f0e8d748a0410b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveTime: 20
-  moveInterval: 20
-  targetNote1: 2
-  targetNote2: 4
-  range: 25
-  moveStartLimit: 0

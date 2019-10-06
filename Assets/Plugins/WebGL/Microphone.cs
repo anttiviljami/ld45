@@ -102,6 +102,7 @@ namespace UnityEngine
 
         static void OnAudioRead(float[] data)
         {
+            Debug.Log(data.Length);
             Array.Copy(_sSharedArray, data, data.Length);
         }
 

@@ -274,7 +274,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2168547485070751833}
   - component: {fileID: 5241027120774937257}
-  - component: {fileID: 3525762765854361466}
   m_Layer: 0
   m_Name: rain
   m_TagString: Untagged
@@ -345,20 +344,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3525762765854361466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9003066411483581328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2626fb77645c18b48bf575df11616c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animal: {r: 0.9056604, g: 0.28327918, b: 0.20932718, a: 1}
-  earth: {r: 0.50986165, g: 0.745283, b: 0.27772337, a: 1}
-  weather: {r: 1, g: 0.6693673, b: 0, a: 1}
-  building: {r: 1, g: 1, b: 1, a: 1}
-  plant: {r: 0.37833747, g: 0.46316367, b: 0.735849, a: 1}

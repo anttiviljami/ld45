@@ -73,6 +73,8 @@ var MicrophonePlugin = {
           }
           document.position =
             (document.position + document.tempSize) % document.dataArray.length;
+
+          console.log(document.position);
         };
 
         document.readDataOnInterval();
