@@ -47,7 +47,7 @@ public class EntityManager : MonoBehaviour
         entities.Remove(removedEntity);
     }
 
-    public Entity GetClosestInRange(Vector3 position, float range, Note.Name note1, Note.Name note2)
+    public Entity GetClosestInRange(Vector3 position, float range, Note.Name note1, Note.Name note2, NoteSequence self)
     {
         var rangeSquared = range * range;
         float closestDistance = float.MaxValue;
@@ -55,7 +55,8 @@ public class EntityManager : MonoBehaviour
 
         for (int i = 0; i < entities.Count; i++)
         {
-            if (((entities[i].recipe.note1.NoteName & note1) > 0)
+            if (!entities[i].recipe.Equals(self)
+                && ((entities[i].recipe.note1.NoteName & note1) > 0)
                 && ((entities[i].recipe.note2.NoteName & note2) > 0))
             {
                 var dist = Vector3.SqrMagnitude(position - entities[i].Position);

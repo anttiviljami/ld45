@@ -59,7 +59,7 @@ public class LivingEntity : Entity
         if (priority >= currentMovePriority)
         {
             currentMovePriority = priority;
-            movement += direction;
+            movement = direction;
             hasMovement = true;
         }
     }

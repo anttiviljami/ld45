@@ -49,11 +49,20 @@ public class AvoidanceBehaviour : MonoBehaviour
         }
         else if (Time.time > nextMoveStart && Time.time > moveStartLimit)
         {
-            Target = EntityManager.Instance.GetClosestInRange(entity.Position, range, targetNote1, targetNote2);
+            Target = EntityManager.Instance.GetClosestInRange(entity.Position, range, targetNote1, targetNote2, entity.recipe);
             if (Target)
             {
                 moveEndTime = Time.time + moveTime;
             }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (Target)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(entity.Position, Target.Position);
         }
     }
 }
