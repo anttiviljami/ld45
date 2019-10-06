@@ -169,25 +169,25 @@ public class SequenceDetector
             case "C":
                 return new Note(Note.Name.Animals);
             case "C#":
-                return new Note(Note.Name.Animals);
+                return new Note(Note.Name.Plants);
             case "D":
                 return new Note(Note.Name.Plants);
             case "D#":
                 return new Note(Note.Name.Plants);
             case "E":
-                return new Note(Note.Name.Earth);
+                return new Note(Note.Name.Plants);
             case "F":
                 return new Note(Note.Name.Earth);
             case "F#":
                 return new Note(Note.Name.Earth);
             case "G":
-                return new Note(Note.Name.Weather);
+                return new Note(Note.Name.Earth);
             case "G#":
                 return new Note(Note.Name.Weather);
             case "A":
                 return new Note(Note.Name.Weather);
             case "A#":
-                return new Note(Note.Name.Weather);
+                return new Note(Note.Name.Animals);
             case "B":
                 return new Note(Note.Name.Animals);
             default:

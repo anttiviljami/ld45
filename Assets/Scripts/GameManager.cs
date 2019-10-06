@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioClip tickSound;
 
+    [SerializeField]
+    private AudioClip themeJingle;
+    private AudioSource audioSource;
+
     private MicrophoneFeed microphoneFeed;
 
     private SequenceDetector sequenceDetector;
@@ -77,12 +81,13 @@ public class GameManager : MonoBehaviour
 
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
         sequenceDetector = SequenceDetector.Instance;
+        audioSource = GetComponent<AudioSource>();
 
         // send running state change
         this.IsRunning = true;
 
         Onboard();
-        Invoke("StartGameLoop", 7f);
+        Invoke("StartGameLoop", 5f);
     }
 
     public void Onboard()
@@ -96,14 +101,15 @@ public class GameManager : MonoBehaviour
     {
         microphoneFeed.IsRecording = true; // start recording
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
+        if (!IsMuted)
+            audioSource.PlayOneShot(themeJingle);
     }
 
     void Beat()
     {
         sequenceDetector.Beat(); // triggers beat
-        var audio = GetComponent<AudioSource>();
         if (!IsMuted)
-            audio.PlayOneShot(tickSound);
+            audioSource.PlayOneShot(tickSound, .1f);
     }
 
     private void Update()

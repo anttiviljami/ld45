@@ -94,7 +94,7 @@ public class OnboardingSequenceController : MonoBehaviour
                 state = OnboardingState.TitleScreenOut;
                 LeanTween
                     .value(gameObject, 1f, 0f, 4f)
-                    .setDelay(5f)
+                    .setDelay(3f)
                     .setOnUpdate(value => this.overlay.GetComponent<Image>().color = new Color(0f, 0f, 0f, value))
                     .setOnComplete(() => nextState());
                 break;
