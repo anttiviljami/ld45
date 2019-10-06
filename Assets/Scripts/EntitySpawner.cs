@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class EntitySpawner : MonoBehaviour
 {
@@ -10,10 +11,16 @@ public class EntitySpawner : MonoBehaviour
     [SerializeField]
     private Transform entitiesRoot = default;
 
+    [SerializeField]
+    private float impulseStrength = 1;
+
+    private CinemachineImpulseSource impulseSource;
+
     private List<Entity> prefabLibrary = new List<Entity>();
 
     void Awake()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         LoadPrefabs();
     }
 
@@ -63,7 +70,7 @@ public class EntitySpawner : MonoBehaviour
             for (int i = 0; i < prefabLibrary.Count; i++)
             {
                 if (prefabLibrary[i].recipe.note3.NoteName == Note.Name.Undefined
-                    && prefabLibrary[i].recipe.note1.NoteName == noteSequence.note1.NoteName 
+                    && prefabLibrary[i].recipe.note1.NoteName == noteSequence.note1.NoteName
                     && prefabLibrary[i].recipe.note2.NoteName == noteSequence.note2.NoteName)
                 {
                     prefabs.Add(prefabLibrary[i]);
@@ -77,6 +84,8 @@ public class EntitySpawner : MonoBehaviour
             var entity = Instantiate(prefabs[0], prefab.JitteredPosition(WorldCursor.Instance.Cursor.position), Quaternion.identity);
             entity.transform.parent = entitiesRoot;
             entity.InitializeWithNoteSequence(noteSequence);
+
+            impulseSource.GenerateImpulse(Vector3.one * impulseStrength);
         }
         else
         {
@@ -84,5 +93,6 @@ public class EntitySpawner : MonoBehaviour
             entity.transform.parent = entitiesRoot;
             entity.InitializeWithNoteSequence(noteSequence);
         }
+
     }
 }

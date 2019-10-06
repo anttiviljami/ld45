@@ -189,18 +189,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6fcf0ce4fea24614b0adad4c4f88f1b, type: 3}
---- !u!114 &124099719 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1507664236032208482, guid: f3b8abb331ba64183bbef3e5f086132d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6515223627941985750}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363137e35a97c46ec80eca1a76d4d679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1025358736
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1025358738}
   - component: {fileID: 1025358737}
+  - component: {fileID: 1025358739}
   m_Layer: 8
   m_Name: PostProcessing Global Volume
   m_TagString: Untagged
@@ -249,6 +238,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1025358739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025358736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f243e553a7ff9464f934de630fb508fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distortionByVolume:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.16509603
+      value: 0
+      inSlope: 9.97379
+      outSlope: 74.56948
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.26481092
+      outWeight: 0.042022932
+    - serializedVersion: 3
+      time: 1
+      value: 50
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1276071261
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,11 +559,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5256834472741889398, guid: 469fd60abab3f4b6a98f832dc9a1539f,
-        type: 3}
-      propertyPath: cursor
-      value: 
-      objectReference: {fileID: 124099719}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 469fd60abab3f4b6a98f832dc9a1539f, type: 3}
 --- !u!1001 &8059414728158828241
