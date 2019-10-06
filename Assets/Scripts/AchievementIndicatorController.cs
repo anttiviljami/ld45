@@ -23,6 +23,7 @@ public class AchievementIndicatorController : MonoBehaviour
         LeanTween
             .value(gameObject, 1f, 0f, .5f)
             .setDelay(3f)
-            .setOnUpdate(value => this.achievementText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
+            .setOnUpdate(value => this.achievementText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
+            .setDestroyOnComplete(false);
     }
 }
