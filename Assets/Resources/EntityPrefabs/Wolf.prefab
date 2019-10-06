@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 819733610215520662}
   - component: {fileID: 8519126832544609518}
   - component: {fileID: 946324348381420061}
+  - component: {fileID: 1237742068787717027}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -172,7 +173,7 @@ MonoBehaviour:
       name: 0
   initialPositionJitter: 2
   speed: 1
-  flipSpriteWhenTurning: {fileID: 0}
+  flipSpriteWhenTurning: {fileID: 6025346166704000016}
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,3 +216,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1237742068787717027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088521700814295287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7eb6588c1ca4f469f0e8d748a0410b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 20
+  moveInterval: 20
+  targetNote1: 1
+  targetNote2: 2
+  range: 20

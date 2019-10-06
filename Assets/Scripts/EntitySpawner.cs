@@ -94,6 +94,10 @@ public class EntitySpawner : MonoBehaviour
             entity.transform.parent = entitiesRoot;
             entity.InitializeWithNoteSequence(noteSequence);
         }
+    }
+
+    public void GetEntitiesInRange(NoteSequence sequence, float position, float range)
+    {
 
     }
 }

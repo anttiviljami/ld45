@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public static event System.Action<Entity> EntitySpawned;
+    public static event System.Action<Entity> EntityRemoved;
+
     public NoteSequence recipe;
 
     protected Transform tr;
@@ -19,10 +22,22 @@ public class Entity : MonoBehaviour
 
     public NoteSequence NoteSequence { get; private set; }
 
+    public Vector3 Position => tr.position;
+
     protected virtual void Awake()
     {
         tr = transform;
         rb = GetComponent<Rigidbody>();
+    }
+
+    void OnEnable()
+    {
+        EntitySpawned?.Invoke(this);
+    }
+
+    void OnDisable()
+    {
+        EntityRemoved?.Invoke(this);
     }
 
     public void InitializeWithNoteSequence(NoteSequence sequence)
