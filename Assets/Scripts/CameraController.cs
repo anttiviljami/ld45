@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour
     {
         // Determine how much to move the camera
         Vector3 offset = mainCamera.ScreenToViewportPoint(lastPanPosition - newPanPosition);
-        var move = new Vector2(-offset.x * PanSpeed, -offset.y * PanSpeed);
+        var move = new Vector2(offset.x * PanSpeed, offset.y * PanSpeed);
 
         // Perform the movement
         WorldCursor.Instance.Move(move);

@@ -6,20 +6,20 @@ public class Entity : MonoBehaviour
 {
     public NoteSequence recipe;
 
-    private Transform tr;
+    protected Transform tr;
 
     [SerializeField]
     private float initialPositionJitter = 0.1f;
 
-    private bool isFalling = false;
+    protected bool isFalling = false;
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
     private static readonly Vector3 BOUNDS_SIZE_DEFAULT = Vector3.one * 10;
 
     public NoteSequence NoteSequence { get; private set; }
 
-    void Awake()
+    protected virtual void Awake()
     {
         tr = transform;
         rb = GetComponent<Rigidbody>();
@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour
         return position;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (rb)
         {

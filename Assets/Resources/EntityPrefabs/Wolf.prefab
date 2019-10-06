@@ -125,9 +125,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695044847873520938}
-  - component: {fileID: 8808564298344581207}
+  - component: {fileID: 5339167464910487463}
   - component: {fileID: 819733610215520662}
   - component: {fileID: 8519126832544609518}
+  - component: {fileID: 946324348381420061}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -150,7 +151,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8808564298344581207
+--- !u!114 &5339167464910487463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8088521700814295287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e90cde77c55c4bdaa9aa4a5f1a355c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 90d5318c9f8d04178b2eba111905bfeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   recipe:
@@ -170,6 +171,8 @@ MonoBehaviour:
     note3:
       name: 0
   initialPositionJitter: 2
+  speed: 1
+  flipSpriteWhenTurning: {fileID: 0}
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,3 +203,15 @@ CapsuleCollider:
   m_Height: 3.5
   m_Direction: 0
   m_Center: {x: 0, y: 1.3, z: 0.75}
+--- !u!114 &946324348381420061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088521700814295287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

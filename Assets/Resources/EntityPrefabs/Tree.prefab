@@ -89,9 +89,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695044847873520938}
-  - component: {fileID: 8808564298344581207}
+  - component: {fileID: 5586636284055361532}
   - component: {fileID: 819733610215520662}
-  - component: {fileID: 6832981530059408367}
+  - component: {fileID: 4673025194759884222}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8808564298344581207
+--- !u!114 &5586636284055361532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8088521700814295287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e90cde77c55c4bdaa9aa4a5f1a355c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c8e62c13391444b82c1c9927b625da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   recipe:
@@ -132,8 +132,9 @@ MonoBehaviour:
     note2:
       name: 3
     note3:
-      name: 2
+      name: 0
   initialPositionJitter: 1
+  maxTimeToSleep: 1
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,8 +151,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &6832981530059408367
-BoxCollider:
+--- !u!136 &4673025194759884222
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,6 +161,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.61, y: 2, z: 3}
-  m_Center: {x: 0, y: 1, z: 1.4}
+  m_Radius: 1
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0.5}
