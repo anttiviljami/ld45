@@ -132,7 +132,7 @@ MonoBehaviour:
     note2:
       name: 4
     note3:
-      name: 4
+      name: 1
   initialPositionJitter: 4
   maxTimeToSleep: 10
   maxMassFactor: 20

@@ -132,9 +132,11 @@ MonoBehaviour:
     note2:
       name: 4
     note3:
-      name: 1
+      name: 4
   initialPositionJitter: 1
   maxTimeToSleep: 1
+  maxMassFactor: 10
+  becomeStatic: 0
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -132,7 +132,7 @@ MonoBehaviour:
     note2:
       name: 4
     note3:
-      name: 6
+      name: 2
   initialPositionJitter: 4
 --- !u!54 &819733610215520662
 Rigidbody:
