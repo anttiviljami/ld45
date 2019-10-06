@@ -140,7 +140,8 @@ MonoBehaviour:
   initialPositionJitter: 2
   speed: 1
   hitPoints: 5
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 1121372064660149824, guid: 6991d153e28df4431877a97b24864cbc,
+    type: 3}
   flipSpriteWhenTurning: {fileID: 6025346166704000016}
 --- !u!54 &819733610215520662
 Rigidbody:
