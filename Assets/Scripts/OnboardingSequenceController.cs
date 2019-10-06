@@ -24,6 +24,9 @@ public class OnboardingSequenceController : MonoBehaviour
     [SerializeField]
     private GameObject instruction3;
 
+    [SerializeField]
+    private GameObject instruction4;
+
     public enum OnboardingState
     {
         Initiate,
@@ -34,6 +37,7 @@ public class OnboardingSequenceController : MonoBehaviour
         Instruction1,
         Instruction2,
         Instruction3,
+        Instruction4,
         Finished,
     }
     public OnboardingState state;
@@ -137,7 +141,7 @@ public class OnboardingSequenceController : MonoBehaviour
                 break;
 
             case OnboardingState.Instruction3:
-                state = OnboardingState.Finished;
+                state = OnboardingState.Instruction4;
                 LeanTween
                     .value(gameObject, 0f, 1f, .5f)
                     .setDelay(4f)
@@ -146,6 +150,19 @@ public class OnboardingSequenceController : MonoBehaviour
                     .value(gameObject, 1f, 0f, .5f)
                     .setDelay(10f)
                     .setOnUpdate(value => this.instruction3.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
+                    .setOnComplete(() => nextState());
+                break;
+
+            case OnboardingState.Instruction4:
+                state = OnboardingState.Finished;
+                LeanTween
+                    .value(gameObject, 0f, 1f, .5f)
+                    .setDelay(4f)
+                    .setOnUpdate(value => this.instruction4.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value));
+                LeanTween
+                    .value(gameObject, 1f, 0f, .5f)
+                    .setDelay(10f)
+                    .setOnUpdate(value => this.instruction4.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, value))
                     .setOnComplete(() => nextState());
                 break;
 
