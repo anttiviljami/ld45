@@ -76,8 +76,7 @@ public class GameManager : MonoBehaviour
         // Esc maps to back button on Android
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            // TODO: Open Menu
-            Application.Quit();
+            ToggleMenu();
         }
     }
 
