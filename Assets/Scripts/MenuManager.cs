@@ -15,13 +15,27 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GameObject sensitivityText;
 
+    [SerializeField]
+    private GameObject muteButtonOn;
+
+    [SerializeField]
+    private GameObject muteButtonOff;
+
+    private GameManager gameManager;
     private SequenceDetector sequenceDetector;
 
     public void Awake()
     {
-        overlay.SetActive(false);
-        GameManager.RunningStateChanged += OnRunningStateChanged;
+        gameManager = GameManager.Instance;
         sequenceDetector = SequenceDetector.Instance;
+
+        GameManager.RunningStateChanged += OnRunningStateChanged;
+        GameManager.ToggleMute += UpdateMuteButtons;
+
+        UpdateMuteButtons(gameManager.IsMuted);
+
+        overlay.SetActive(false);
+
         sensitivitySlider.GetComponent<Slider>().value = SequenceDetector.INITIAL_SENSITIVITY;
         SetMicSensitivity(SequenceDetector.INITIAL_SENSITIVITY);
     }
@@ -37,5 +51,16 @@ public class MenuManager : MonoBehaviour
         Debug.Log(new { sensitivity });
         sensitivityText.GetComponent<TextMeshProUGUI>().text = Mathf.Round(sensitivity * 100f) + " %";
         sequenceDetector.sensitivityValue = sensitivity;
+    }
+
+    public void ToggleMute()
+    {
+        gameManager.IsMuted = !gameManager.IsMuted;
+    }
+
+    private void UpdateMuteButtons(bool isMuted)
+    {
+        this.muteButtonOn.SetActive(!isMuted);
+        this.muteButtonOff.SetActive(isMuted);
     }
 }

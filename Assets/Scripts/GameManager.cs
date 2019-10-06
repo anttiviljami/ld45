@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static event Action<bool> RunningStateChanged;
+    public static event Action<bool> ToggleMute;
     public static event Action GameReset;
 
     [SerializeField]
@@ -50,6 +51,21 @@ public class GameManager : MonoBehaviour
             this.isRunning = value;
             RunningStateChanged?.Invoke(value);
             Time.timeScale = IsRunning ? 1 : 0;
+        }
+    } // pause / unpause game
+
+    private bool isMuted = false;
+    public bool IsMuted
+    {
+        get
+        {
+            return this.isMuted;
+        }
+        set
+        {
+            this.isMuted = value;
+            ToggleMute?.Invoke(value);
+            Time.timeScale = isMuted ? 1 : 0;
         }
     } // pause / unpause game
 
@@ -87,7 +103,8 @@ public class GameManager : MonoBehaviour
     {
         sequenceDetector.Beat(); // triggers beat
         var audio = GetComponent<AudioSource>();
-        audio.PlayOneShot(tickSound);
+        if (!IsMuted)
+            audio.PlayOneShot(tickSound);
     }
 
     private void Update()
