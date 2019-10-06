@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = Object.FindObjectOfType<GameManager>();
+                instance = UnityEngine.Object.FindObjectOfType<GameManager>();
             }
             if (instance == null)
             {
@@ -23,6 +24,11 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
+    public static event Action<bool> RunningStateChanged;
+
+    [SerializeField]
+    private AudioClip tickSound;
 
     private MicrophoneFeed microphoneFeed;
 
@@ -38,11 +44,16 @@ public class GameManager : MonoBehaviour
         microphoneFeed.IsRecording = true; // start recording
         sequenceDetector = new SequenceDetector();
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
+
+        // send running state change
+        RunningStateChanged?.Invoke(true);
     }
 
     void Beat()
     {
         sequenceDetector.Beat(); // triggers beat
+        var audio = GetComponent<AudioSource>();
+        audio.PlayOneShot(tickSound);
     }
 
     private void Update()
@@ -59,9 +70,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("TOGGLE MENU");
         IsRunning = !IsRunning;
-        if (!IsRunning)
-        {
-            microphoneFeed.IsRecording = false;
-        }
+        RunningStateChanged?.Invoke(IsRunning);
+        Time.timeScale = IsRunning ? 1 : 0;
     }
 }

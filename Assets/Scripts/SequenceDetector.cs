@@ -11,6 +11,7 @@ public class SequenceDetector
     public const int SEQUENCE_LENGTH = 3;
     public const float VOLUME_THRESHOLD = 0.15f;
     public const float VOLUME_THRESHOLD_SAMPLES = 4;
+    public const float MIN_NOTE_COUNT = 2;
 
     public bool IsOverVolumeThreshold = false;
 
@@ -135,7 +136,7 @@ public class SequenceDetector
         var mostCommonNote = outputs
             .Select((o) => pitchToMusicalNote(o.pitch))
             .GroupBy(s => s)
-            .Where(g => g.Count() > 1)
+            .Where(g => g.Count() > MIN_NOTE_COUNT)
             .OrderByDescending(g => g.Count())
             .Select(g => g.Key)
             .FirstOrDefault();
