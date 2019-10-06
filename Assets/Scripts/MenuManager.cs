@@ -13,8 +13,9 @@ public class MenuManager : MonoBehaviour
         GameManager.RunningStateChanged += OnRunningStateChanged;
     }
 
-    public void OnRunningStateChanged(bool IsRunning)
+    public void OnRunningStateChanged(bool isRunning)
     {
-        overlay.SetActive(!IsRunning);
+        Debug.Log(isRunning);
+        overlay.SetActive(!isRunning);
     }
 }

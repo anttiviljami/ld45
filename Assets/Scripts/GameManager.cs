@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static event Action<bool> RunningStateChanged;
+    public static event Action GameReset;
 
     [SerializeField]
     private AudioClip tickSound;
@@ -34,7 +35,21 @@ public class GameManager : MonoBehaviour
 
     private SequenceDetector sequenceDetector;
 
-    private bool IsRunning = true; // pause / unpause
+    private bool isRunning = false;
+    public bool IsRunning
+    {
+        get
+        {
+            return this.isRunning;
+        }
+        set
+        {
+            this.isRunning = value;
+            RunningStateChanged?.Invoke(value);
+            Time.timeScale = IsRunning ? 1 : 0;
+        }
+    } // pause / unpause game
+
     private bool IsRecording = true; // stop recording
 
     void Awake()
@@ -46,7 +61,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
 
         // send running state change
-        RunningStateChanged?.Invoke(true);
+        this.IsRunning = true;
     }
 
     void Beat()
@@ -68,9 +83,17 @@ public class GameManager : MonoBehaviour
 
     public void ToggleMenu()
     {
-        Debug.Log("TOGGLE MENU");
-        IsRunning = !IsRunning;
-        Time.timeScale = IsRunning ? 1 : 0;
-        RunningStateChanged?.Invoke(IsRunning);
+        this.IsRunning = !IsRunning;
+    }
+
+    public void ResetGame()
+    {
+        this.IsRunning = true;
+        GameReset?.Invoke();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

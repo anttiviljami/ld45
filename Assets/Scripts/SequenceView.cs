@@ -25,11 +25,13 @@ public class SequenceView : MonoBehaviour
     void Awake()
     {
         SequenceDetector.NoteDetected += NoteDetected;
+        SequenceDetector.NoteSequenceDetected += NoteSequenceDetected;
     }
 
     void OnDestroy()
     {
         SequenceDetector.NoteDetected -= NoteDetected;
+        SequenceDetector.NoteSequenceDetected -= NoteSequenceDetected;
     }
 
     void Update()
@@ -105,6 +107,17 @@ public class SequenceView : MonoBehaviour
                 noteBlocks.RemoveAt(i);
                 Destroy(noteBlock);
             }
+        }
+    }
+
+    void NoteSequenceDetected(NoteSequence _)
+    {
+        var sequenceBlocks = noteBlocks.GetRange(0, 3);
+        foreach (var block in sequenceBlocks)
+        {
+            // @TODO TIMO add animation here
+            block.GetComponent<Image>().color = new Color(0f, 1f, .4f, 1f);
+            block.GetComponent<RectTransform>().localScale = new Vector3(1.1f, 1.1f, 1.1f);
         }
     }
 }
