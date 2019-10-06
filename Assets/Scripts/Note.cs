@@ -6,9 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public struct Note : IEqualityComparer<Note>
 {
+    [System.Flags]
     public enum Name
     {
-        Undefined, Animals, Plants, Earth, Weather, Building
+        Undefined = 0,
+        Animals = 1,
+        Plants = 2,
+        Earth = 4,
+        Weather = 8,
+        Building = 16
     }
 
     [SerializeField]

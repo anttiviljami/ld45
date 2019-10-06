@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 819733610215520662}
   - component: {fileID: 8519126832544609518}
   - component: {fileID: 8914320507176187697}
+  - component: {fileID: 422231924166111613}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Untagged
@@ -172,6 +173,8 @@ MonoBehaviour:
       name: 0
   initialPositionJitter: 2
   speed: 1
+  hitPoints: 5
+  deathEffect: {fileID: 0}
   flipSpriteWhenTurning: {fileID: 6025346166704000016}
 --- !u!54 &819733610215520662
 Rigidbody:
@@ -215,3 +218,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &422231924166111613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088521700814295287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cb4458b3ed44adda8be3e87de4f7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 30
+  moveInterval: 5
+  targetNote1: 1
+  targetNote2: 5
+  range: 15
+  moveStartLimit: 0

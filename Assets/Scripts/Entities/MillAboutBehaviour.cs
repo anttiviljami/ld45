@@ -13,6 +13,8 @@ public class MillAboutBehaviour : MonoBehaviour
 
     public bool CanMillAbout { get; set; }
 
+    private const int MOVE_PRIORITY = 10;
+
     private float nextTargetTime = 0;
 
     void Awake()
@@ -32,7 +34,7 @@ public class MillAboutBehaviour : MonoBehaviour
             }
             else
             {
-                entity.Move(targetPosition - tr.position);
+                entity.Move(targetPosition - tr.position, MOVE_PRIORITY);
             }
         }
     }

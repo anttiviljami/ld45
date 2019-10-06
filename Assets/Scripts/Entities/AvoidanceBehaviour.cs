@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LivingEntity))]
-public class EntityAttractBehaviour : MonoBehaviour
+public class AvoidanceBehaviour : MonoBehaviour
 {
     [SerializeField]
     private float moveTime = 20;
@@ -30,7 +29,7 @@ public class EntityAttractBehaviour : MonoBehaviour
     // Do not allow new movement until this timestamp
     public float moveStartLimit;
 
-    private const int MOVE_PRIORITY = 20;
+    private const int MOVE_PRIORITY = 30;
 
     void Awake()
     {
@@ -41,7 +40,7 @@ public class EntityAttractBehaviour : MonoBehaviour
     {
         if (Target)
         {
-            entity.Move(Target.Position - entity.Position, MOVE_PRIORITY);
+            entity.Move(entity.Position - Target.Position, MOVE_PRIORITY);
             if (Time.time > moveEndTime)
             {
                 Target = null;

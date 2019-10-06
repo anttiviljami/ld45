@@ -20,6 +20,8 @@ public class LivingEntity : Entity
 
     private float Health => Mathf.Clamp(hitPoints - damage, 0, hitPoints);
 
+    private int currentMovePriority = -1;
+
     [SerializeField]
     private GameObject deathEffect;
 
@@ -49,10 +51,14 @@ public class LivingEntity : Entity
         }
     }
 
-    public void Move(Vector3 direction)
+    public void Move(Vector3 direction, int priority)
     {
-        movement += direction;
-        hasMovement = true;
+        if (priority >= currentMovePriority)
+        {
+            currentMovePriority = priority;
+            movement += direction;
+            hasMovement = true;
+        }
     }
 
     private void ApplyMove()
@@ -67,6 +73,8 @@ public class LivingEntity : Entity
         rb.position = newPosition;
         movement = Vector3.zero;
         hasMovement = false;
+
+        currentMovePriority = -1;
     }
 
     public void TakeDamage(float amount)
