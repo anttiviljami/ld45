@@ -18,7 +18,6 @@ public class AchievementsController
         }
     }
 
-
     public AchievementsController()
     {
         SequenceDetector.NoteSequenceDetected += OnNoteSequenceDetected;
@@ -45,6 +44,11 @@ public class AchievementsController
         { Achievement.Vainamoinen, "Vainamoinen" },
         { Achievement.FourSeasons, "Four seasons" },
     };
+
+    private bool springSummoned = false;
+    private bool autumnSummoned = false;
+    private bool winterSummoned = false;
+    private bool summerSummoned = false;
 
     public List<Achievement> triggeredAchievements = new List<Achievement>();
 
@@ -83,6 +87,37 @@ public class AchievementsController
         {
             TriggerAchivement(Achievement.Tornado);
         }
+
+        // check seasons
+        if (noteSequence.note1.NoteName == Note.Name.Weather
+        && noteSequence.note2.NoteName == Note.Name.Earth)
+        {
+            switch (noteSequence.note3.NoteName)
+            {
+                case Note.Name.Animals:
+                    // Summer
+                    summerSummoned = true;
+                    break;
+                case Note.Name.Plants:
+                    // Spring
+                    springSummoned = true;
+                    break;
+                case Note.Name.Earth:
+                    // Autumn
+                    autumnSummoned = true;
+                    break;
+                case Note.Name.Weather:
+                    // Winter
+                    winterSummoned = true;
+                    break;
+            }
+            if (springSummoned && summerSummoned && autumnSummoned && winterSummoned)
+            {
+                TriggerAchivement(Achievement.FourSeasons);
+            }
+        }
+
+
     }
 
     public void OnEntityKilled(KillEventArgs args)
