@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 80, z: 160}
+  m_FollowOffset: {x: 0, y: 50, z: 160}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -539,7 +539,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 6815050865144297954}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
