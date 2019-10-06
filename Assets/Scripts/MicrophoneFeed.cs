@@ -43,6 +43,12 @@ public class MicrophoneFeed : MonoBehaviour
 
     void Awake()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        // WebGL needs thi
+        Microphone.Init();
+        Microphone.QueryAudioInput();
+#endif
+
         // init microphone (use first microphone available)
         if (Microphone.devices.Length > 0)
             microphoneInput = Microphone.Start(Microphone.devices[0], true, 30, SAMPLE_FREQUENCY);
@@ -58,6 +64,13 @@ public class MicrophoneFeed : MonoBehaviour
         // start recording
         IsRecording = true;
     }
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        void Update()
+        {
+            Microphone.Update();
+        }
+#endif
 
     void ProcessMicrophoneData()
     {

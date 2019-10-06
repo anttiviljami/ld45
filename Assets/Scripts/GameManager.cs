@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("TOGGLE MENU");
         IsRunning = !IsRunning;
-        RunningStateChanged?.Invoke(IsRunning);
         Time.timeScale = IsRunning ? 1 : 0;
+        RunningStateChanged?.Invoke(IsRunning);
     }
 }

@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 
     public void Awake()
     {
+        overlay.SetActive(false);
         GameManager.RunningStateChanged += OnRunningStateChanged;
     }
 
