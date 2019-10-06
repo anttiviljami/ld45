@@ -14,6 +14,16 @@ public class LivingEntity : Entity
     private bool hasMovement = false;
 
     [SerializeField]
+    private float hitPoints = 5;
+
+    private float damage = 0;
+
+    private float Health => Mathf.Clamp(hitPoints - damage, 0, hitPoints);
+
+    [SerializeField]
+    private GameObject deathEffect;
+
+    [SerializeField]
     private Transform flipSpriteWhenTurning;
 
     void FixedUpdate()
@@ -57,5 +67,22 @@ public class LivingEntity : Entity
         rb.position = newPosition;
         movement = Vector3.zero;
         hasMovement = false;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if (!IsAlive) return;
+
+        damage += amount;
+
+        if (Health <= 0)
+        {
+            isAlive = false;
+            if (deathEffect)
+            {
+                Instantiate(deathEffect, tr.position, Quaternion.identity);
+            }
+            Destroy(gameObject);
+        }
     }
 }

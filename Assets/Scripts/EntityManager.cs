@@ -55,7 +55,7 @@ public class EntityManager : MonoBehaviour
 
         for (int i = 0; i < entities.Count; i++)
         {
-            if (entities[i].NoteSequence.note1.NoteName == note1 && entities[i].NoteSequence.note2.NoteName == note2)
+            if (entities[i].recipe.note1.NoteName == note1 && entities[i].recipe.note2.NoteName == note2)
             {
                 var dist = Vector3.SqrMagnitude(position - entities[i].Position);
                 if (dist <= rangeSquared && dist < closestDistance)

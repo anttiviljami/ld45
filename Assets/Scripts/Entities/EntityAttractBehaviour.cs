@@ -22,10 +22,13 @@ public class EntityAttractBehaviour : MonoBehaviour
 
     private LivingEntity entity;
 
-    private Entity target;
+    public Entity Target { get; private set; }
 
     private float nextMoveStart;
     private float moveEndTime;
+
+    // Do not allow new movement until this timestamp
+    public float moveStartLimit;
 
     private MillAboutBehaviour milling;
 
@@ -37,20 +40,20 @@ public class EntityAttractBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (target)
+        if (Target)
         {
-            entity.Move(target.Position - entity.Position);
+            entity.Move(Target.Position - entity.Position);
             if (Time.time > moveEndTime)
             {
                 if (milling) milling.CanMillAbout = true;
-                target = null;
+                Target = null;
                 nextMoveStart = Time.time + moveInterval;
             }
         }
-        else if (Time.time > nextMoveStart)
+        else if (Time.time > nextMoveStart && Time.time > moveStartLimit)
         {
-            target = EntityManager.Instance.GetClosestInRange(entity.Position, range, targetNote1, targetNote2);
-            if (target)
+            Target = EntityManager.Instance.GetClosestInRange(entity.Position, range, targetNote1, targetNote2);
+            if (Target)
             {
                 if (milling) milling.CanMillAbout = false;
                 moveEndTime = Time.time + moveTime;

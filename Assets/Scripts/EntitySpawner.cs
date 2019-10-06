@@ -20,6 +20,7 @@ public class EntitySpawner : MonoBehaviour
 
     void Awake()
     {
+        var initManager = EntityManager.Instance;
         impulseSource = GetComponent<CinemachineImpulseSource>();
         LoadPrefabs();
     }
