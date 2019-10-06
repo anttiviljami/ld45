@@ -27,6 +27,9 @@ public class WorldCursor : MonoBehaviour
     [SerializeField]
     private float momentumDamping = 1;
 
+    [SerializeField]
+    private ParticleSystem burstParticles;
+
     private bool useMomentum = false;
     private Vector2 momentum;
 
@@ -53,6 +56,11 @@ public class WorldCursor : MonoBehaviour
         {
             useMomentum = true;
         }
+    }
+
+    public void Burst()
+    {
+        burstParticles?.Emit(50);
     }
 
     public void Move(Vector2 amount)

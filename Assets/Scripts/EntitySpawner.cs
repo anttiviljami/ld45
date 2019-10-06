@@ -86,6 +86,7 @@ public class EntitySpawner : MonoBehaviour
             entity.InitializeWithNoteSequence(noteSequence);
 
             impulseSource.GenerateImpulse(Vector3.one * impulseStrength);
+            WorldCursor.Instance.Burst();
         }
         else
         {
