@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
 
     private SequenceDetector sequenceDetector;
 
+    [SerializeField]
+    private GameObject onboardingSequence;
+
     private bool isRunning = false;
     public bool IsRunning
     {
@@ -55,15 +58,28 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
+        sequenceDetector = new SequenceDetector();
+
         // send running state change
         this.IsRunning = true;
+
+        GameReset?.Invoke();
+        Onboard();
+        Invoke("StartGameLoop", 5f);
     }
 
-    void Init()
+    public void Onboard()
     {
-        microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
+        // start onboarding
+        Instantiate(onboardingSequence, Vector3.zero, Quaternion.identity);
+        onboardingSequence.SetActive(true);
+    }
+
+    public void StartGameLoop()
+    {
         microphoneFeed.IsRecording = true; // start recording
-        sequenceDetector = new SequenceDetector();
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
     }
 
@@ -92,6 +108,7 @@ public class GameManager : MonoBehaviour
     {
         this.IsRunning = true;
         GameReset?.Invoke();
+        Onboard();
     }
 
     public void ExitGame()

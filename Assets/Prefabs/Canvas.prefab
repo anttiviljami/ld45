@@ -54,6 +54,8 @@ MonoBehaviour:
   weatherIcon: {fileID: 21300000, guid: 9f1081d48d665446584924208cfe0ae8, type: 3}
   plantIcon: {fileID: 21300000, guid: 5657c96eb7038426d8aa955d663b14ed, type: 3}
   emptyIcon: {fileID: 21300000, guid: 4669dca94025d479db89ff2d523017b5, type: 3}
+  mainColor: {r: 1, g: 1, b: 1, a: 1}
+  successColor: {r: 0.8584906, g: 0.7659286, b: 0.47378963, a: 0}
 --- !u!1 &1504896565348810419
 GameObject:
   m_ObjectHideFlags: 0

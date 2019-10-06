@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,12 @@ public class SequenceView : MonoBehaviour
     [SerializeField]
     private Sprite emptyIcon;
 
+    [SerializeField]
+    private Color mainColor;
+
+    [SerializeField]
+    private Color successColor;
+
     private List<GameObject> noteBlocks = new List<GameObject>();
 
     void Awake()
@@ -32,11 +39,6 @@ public class SequenceView : MonoBehaviour
     {
         SequenceDetector.NoteDetected -= NoteDetected;
         SequenceDetector.NoteSequenceDetected -= NoteSequenceDetected;
-    }
-
-    void Update()
-    {
-        // noteBlocks()
     }
 
     void NoteDetected(Note note)
@@ -73,7 +75,7 @@ public class SequenceView : MonoBehaviour
         var tf = GetComponent<RectTransform>();
         block.transform.localPosition = new Vector2(150, -100);
         block.transform.localScale = Vector3.one;
-
+        block.GetComponent<Image>().color = mainColor;
         block.SetActive(true);
 
         // keep track of block
@@ -126,13 +128,19 @@ public class SequenceView : MonoBehaviour
             noteImage3.transform.localScale = Vector3.one * value;
         });
 
-        var colorTween = LeanTween.value(gameObject, 0, 1, 0.25f);
-        colorTween.setEaseOutElastic();
-        colorTween.setOnUpdate(value =>
-        {
-            noteImage1.color = Color.Lerp(Color.white, Color.green, value);
-            noteImage2.color = Color.Lerp(Color.white, Color.green, value);
-            noteImage3.color = Color.Lerp(Color.white, Color.green, value);
-        });
+        successColor.a = 1f;
+        noteImage1.color = successColor;
+        noteImage2.color = successColor;
+        noteImage3.color = successColor;
+
+        //var colorTween = LeanTween.value(gameObject, 0, 1, 0.25f);
+        //colorTween.setEaseOutElastic();
+
+        //colorTween.setOnUpdate(value =>
+        //{
+        //    noteImage1.color = Color.Lerp(mainColor, successColor, value);
+        //    noteImage2.color = Color.Lerp(mainColor, successColor, value);
+        //    noteImage3.color = Color.Lerp(mainColor, successColor, value);
+        //});
     }
 }
