@@ -35,16 +35,6 @@ public class SequenceDetector
         MicrophoneFeed.OutputAnalyzed -= OnOutputAnalyzed;
     }
 
-    void OnThresholdStart()
-    {
-        Debug.Log("SequenceDetector: OnThresholdStart");
-    }
-
-    void OnThresholdEnd()
-    {
-        Debug.Log("SequenceDetector: OnThresholdEnd");
-    }
-
     void OnOutputAnalyzed(MicrophoneFeed.MicrophoneOutput output)
     {
         // track volume
@@ -130,8 +120,7 @@ public class SequenceDetector
 
     private string pitchToMusicalNote(float pitch)
     {
-        if (pitch == 0) // no pitch was detected
-            return "unknown";
+        if (pitch == 0) return "unknown"; // no pitch detected
         var notes = new[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         var noteNum = 12 * (Mathf.Log(pitch / 440) / Mathf.Log(2));
         return notes[(Mathf.RoundToInt(noteNum) + 69) % 12];
