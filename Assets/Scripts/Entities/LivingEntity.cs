@@ -28,6 +28,9 @@ public class LivingEntity : Entity
     [SerializeField]
     private Transform flipSpriteWhenTurning;
 
+    [SerializeField]
+    private Transform fallSpriteWhenDieing;
+
     void FixedUpdate()
     {
         if (flipSpriteWhenTurning)
@@ -90,7 +93,18 @@ public class LivingEntity : Entity
             {
                 Instantiate(deathEffect, tr.position, Quaternion.identity);
             }
-            Destroy(gameObject);
+            if (fallSpriteWhenDieing)
+            {
+                LeanTween
+                    .rotate(fallSpriteWhenDieing.gameObject, Vector3.right * 90, 2)
+                    .setEaseInCubic();
+
+                Destroy(gameObject, 2.1f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

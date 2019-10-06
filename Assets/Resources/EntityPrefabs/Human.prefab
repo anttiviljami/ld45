@@ -160,6 +160,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1121372064660149824, guid: 6991d153e28df4431877a97b24864cbc,
     type: 3}
   flipSpriteWhenTurning: {fileID: 6025346166704000016}
+  fallSpriteWhenDieing: {fileID: 6025346166704000016}
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0
