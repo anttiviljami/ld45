@@ -112,12 +112,27 @@ public class SequenceView : MonoBehaviour
 
     void NoteSequenceDetected(NoteSequence _)
     {
+        var noteImage1 = noteBlocks[0].GetComponent<Image>();
+        var noteImage2 = noteBlocks[1].GetComponent<Image>();
+        var noteImage3 = noteBlocks[2].GetComponent<Image>();
         var sequenceBlocks = noteBlocks.GetRange(0, 3);
-        foreach (var block in sequenceBlocks)
+
+        var scaleTween = LeanTween.value(gameObject, 1, 1, 0.45f);
+        scaleTween.setEasePunch();
+        scaleTween.setOnUpdate(value =>
         {
-            // @TODO TIMO add animation here
-            block.GetComponent<Image>().color = new Color(0f, 1f, .4f, 1f);
-            block.GetComponent<RectTransform>().localScale = new Vector3(1.1f, 1.1f, 1.1f);
-        }
+            noteImage1.transform.localScale = Vector3.one * value;
+            noteImage2.transform.localScale = Vector3.one * value;
+            noteImage3.transform.localScale = Vector3.one * value;
+        });
+
+        var colorTween = LeanTween.value(gameObject, 0, 1, 0.25f);
+        colorTween.setEaseOutElastic();
+        colorTween.setOnUpdate(value =>
+        {
+            noteImage1.color = Color.Lerp(Color.white, Color.green, value);
+            noteImage2.color = Color.Lerp(Color.white, Color.green, value);
+            noteImage3.color = Color.Lerp(Color.white, Color.green, value);
+        });
     }
 }
