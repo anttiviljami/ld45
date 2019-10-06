@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
+  - component: {fileID: 5955615761335495148}
   m_Layer: 0
-  m_Name: camel
+  m_Name: deer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a60a9ab69b05f4be8b24708621f97750, type: 3}
-  m_Color: {r: 0.8113208, g: 0.514008, b: 0.3099858, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1838cd753f5af4b5f86f0a81851f9b01, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -80,6 +81,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5955615761335495148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935943451176750876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2626fb77645c18b48bf575df11616c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: {r: 1, g: 1, b: 1, a: 1}
+  earth: {r: 0.7830189, g: 0.6486679, b: 0.2622375, a: 1}
+  weather: {r: 0.6370815, g: 0.61089355, b: 0.9056604, a: 1}
+  building: {r: 1, g: 1, b: 1, a: 1}
+  plant: {r: 0.7575336, g: 1, b: 0.5613208, a: 1}
 --- !u!1 &8088521700814295287
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,9 +111,10 @@ GameObject:
   - component: {fileID: 819733610215520662}
   - component: {fileID: 8519126832544609518}
   - component: {fileID: 8914320507176187697}
-  - component: {fileID: 422231924166111613}
+  - component: {fileID: 4119233860758100828}
+  - component: {fileID: 3122906875763864609}
   m_Layer: 0
-  m_Name: Camel
+  m_Name: Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,9 +151,9 @@ MonoBehaviour:
     note1:
       name: 1
     note2:
-      name: 2
+      name: 1
     note3:
-      name: 4
+      name: 0
   initialPositionJitter: 2
   speed: 1
   hitPoints: 5
@@ -182,7 +201,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &422231924166111613
+--- !u!114 &4119233860758100828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088521700814295287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7eb6588c1ca4f469f0e8d748a0410b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 20
+  moveInterval: 20
+  targetNote1: 1
+  targetNote2: 3
+  range: 20
+  moveStartLimit: 0
+--- !u!114 &3122906875763864609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,9 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6cb4458b3ed44adda8be3e87de4f7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 30
-  moveInterval: 5
+  moveTime: 20
+  moveInterval: 20
   targetNote1: 1
   targetNote2: 4
-  range: 15
+  range: 20
   moveStartLimit: 0

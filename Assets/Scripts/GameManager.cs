@@ -60,14 +60,14 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
-        sequenceDetector = new SequenceDetector();
+        sequenceDetector = SequenceDetector.Instance;
 
         // send running state change
         this.IsRunning = true;
 
         GameReset?.Invoke();
         Onboard();
-        Invoke("StartGameLoop", 5f);
+        Invoke("StartGameLoop", 7f);
     }
 
     public void Onboard()

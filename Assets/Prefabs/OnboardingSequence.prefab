@@ -573,7 +573,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A game by:\n\nTimo Moisio\nJoel Saarim\xE4ki\nViljami Kuosmanen"
+  m_text: 'A game by:
+
+
+    Timo Moisio
+
+    Joel Saarimaki
+
+    Viljami Kuosmanen'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a80683711c4540b59a99e1ccfde8ffe, type: 2}
   m_sharedMaterial: {fileID: -6386381695367189708, guid: 2a80683711c4540b59a99e1ccfde8ffe,
@@ -650,7 +657,7 @@ MonoBehaviour:
     linkCount: 0
     lineCount: 5
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}

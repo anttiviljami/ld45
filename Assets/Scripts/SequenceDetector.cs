@@ -9,10 +9,19 @@ public class SequenceDetector
     public const int BPM = 80; // beats per minute
     public const float BEAT_INTERVAL = 60f / (float)BPM;
     public const int SEQUENCE_LENGTH = 3;
-    public const float VOLUME_THRESHOLD = 0.15f;
+
+    public const float INITIAL_SENSITIVITY = .85f;
     public const float VOLUME_THRESHOLD_SAMPLES = 4;
     public const float MIN_NOTE_COUNT = 2;
 
+    public float sensitivityValue = INITIAL_SENSITIVITY;
+    public float volumeThreshold
+    {
+        get
+        {
+            return 1f - sensitivityValue;
+        }
+    }
     public bool IsOverVolumeThreshold = false;
 
     public static event Action ThresholdStart;
@@ -25,6 +34,19 @@ public class SequenceDetector
     protected List<Note> currentSequence = new List<Note>();
 
     private List<MicrophoneFeed.MicrophoneOutput> outputs = new List<MicrophoneFeed.MicrophoneOutput>();
+
+    private static SequenceDetector instance;
+    public static SequenceDetector Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new SequenceDetector();
+            }
+            return instance;
+        }
+    }
 
     public SequenceDetector()
     {
@@ -46,14 +68,14 @@ public class SequenceDetector
         }
         // count average volume
 
-        if (IsOverVolumeThreshold && volumeSequence.Average() < VOLUME_THRESHOLD)
+        if (IsOverVolumeThreshold && volumeSequence.Average() < volumeThreshold)
         {
             // flip if volume sequence goes under
             IsOverVolumeThreshold = false;
             ThresholdEnd?.Invoke();
         }
 
-        if (!IsOverVolumeThreshold && volumeSequence.Average() > VOLUME_THRESHOLD)
+        if (!IsOverVolumeThreshold && volumeSequence.Average() > volumeThreshold)
         {
             // flip if volume sequence goes under
             IsOverVolumeThreshold = true;

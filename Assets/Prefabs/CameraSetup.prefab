@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 6043037687938151849}
-  minFov: 12
+  minFov: 5
   maxFov: 70
   PanSpeed: 6
   ZoomSpeedTouch: 0.1
