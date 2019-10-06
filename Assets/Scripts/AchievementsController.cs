@@ -22,6 +22,7 @@ public class AchievementsController
     public AchievementsController()
     {
         SequenceDetector.NoteSequenceDetected += OnNoteSequenceDetected;
+        HostileBehaviour.EntityKilled += OnEntityKilled;
     }
 
     public enum Achievement
@@ -29,6 +30,7 @@ public class AchievementsController
         LetThereBeLight,
         WolfAttack,
         OffTheEdge,
+        Murder,
         Vainamoinen,
         FourSeasons,
     }
@@ -37,7 +39,7 @@ public class AchievementsController
         { Achievement.LetThereBeLight, "Let there be light" },
         { Achievement.WolfAttack, "Wolf Attack" },
         { Achievement.OffTheEdge, "Fall off the edge" },
-        { Achievement.Vainamoinen, "Murder most foul" },
+        { Achievement.Murder, "Murder most foul" },
         { Achievement.Vainamoinen, "Vainamoinen" },
         { Achievement.FourSeasons, "Four seasons" },
     };
@@ -69,6 +71,21 @@ public class AchievementsController
         && noteSequence.note3.NoteName == Note.Name.Weather)
         {
             TriggerAchivement(Achievement.Vainamoinen);
+        }
+    }
+
+    public void OnEntityKilled(KillEventArgs args)
+    {
+        // check barbarian
+        if (args.killer.recipe.note1.NoteName == Note.Name.Animals
+        && args.killer.recipe.note2.NoteName == Note.Name.Animals
+        && args.killer.recipe.note3.NoteName == Note.Name.Weather
+        // check victim is human
+        && args.victim.recipe.note1.NoteName == Note.Name.Animals
+        && args.victim.recipe.note2.NoteName == Note.Name.Animals
+        )
+        {
+            TriggerAchivement(Achievement.Murder);
         }
     }
 }
