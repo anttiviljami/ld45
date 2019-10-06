@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dde3b474e948d425b9bf44dda5c2b515, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.46666667}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0.7254902}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1121372064660149824, guid: 6991d153e28df4431877a97b24864cbc,
     type: 3}
   flipSpriteWhenTurning: {fileID: 6025346166704000016}
+  fallSpriteWhenDieing: {fileID: 0}
 --- !u!54 &819733610215520662
 Rigidbody:
   m_ObjectHideFlags: 0

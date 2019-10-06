@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
     {
         // start onboarding
         Instantiate(onboardingSequence, Vector3.zero, Quaternion.identity);
+        onboardingSequence.transform.localScale = Vector3.one;
         onboardingSequence.SetActive(true);
     }
 
