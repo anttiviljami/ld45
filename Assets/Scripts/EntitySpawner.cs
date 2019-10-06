@@ -51,10 +51,44 @@ public class EntitySpawner : MonoBehaviour
 
             OnSequenceDetected(new NoteSequence(note1, note2, note3));
         }
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            var note1 = Note.Name.Earth;
+            var note2 = Note.Name.Earth;
+            var note3 = Note.Name.Earth;
+
+            OnSequenceDetected(new NoteSequence(note1, note2, note3));
+        }
+    }
+
+    private void ChangeSeason(Note.Name forNote)
+    {
+        switch (forNote)
+        {
+            case Note.Name.Animals:
+                SeasonManager.Instance.SetSeason(Season.Summer);
+                break;
+            case Note.Name.Earth:
+                SeasonManager.Instance.SetSeason(Season.Autumn);
+                break;
+            case Note.Name.Plants:
+                SeasonManager.Instance.SetSeason(Season.Spring);
+                break;
+            case Note.Name.Weather:
+                SeasonManager.Instance.SetSeason(Season.Winter);
+                break;
+        }
+
     }
 
     private void OnSequenceDetected(NoteSequence noteSequence)
     {
+        if (noteSequence.note1.NoteName == Note.Name.Weather && noteSequence.note2.NoteName == Note.Name.Earth)
+        {
+            ChangeSeason(noteSequence.note3.NoteName);
+            return;
+        }
+
         List<Entity> prefabs = new List<Entity>();
 
         for (int i = 0; i < prefabLibrary.Count; i++)
