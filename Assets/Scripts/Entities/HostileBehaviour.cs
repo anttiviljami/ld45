@@ -6,6 +6,8 @@ using System.Linq;
 [RequireComponent(typeof(EntityAttractBehaviour))]
 public class HostileBehaviour : MonoBehaviour
 {
+    public static event System.Action<KillEventArgs> EntityKilled;
+
     private EntityAttractBehaviour attract;
     private LivingEntity entity;
 
@@ -49,6 +51,7 @@ public class HostileBehaviour : MonoBehaviour
         if (!target.IsAlive)
         {
             attract.moveStartLimit = Time.time + coolOffAfterKill;
+            EntityKilled?.Invoke(new KillEventArgs() { killer = entity, victim = target });
         }
 
         nextPossibleAttack = Time.time + damageInterval;
