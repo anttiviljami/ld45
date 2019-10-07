@@ -28,10 +28,17 @@ public class WorldCursor : MonoBehaviour
     private float momentumDamping = 1;
 
     [SerializeField]
+    private float idleTime = 25;
+
+    [SerializeField]
     private ParticleSystem burstParticles = default;
 
     private bool useMomentum = false;
     private Vector2 momentum;
+
+    private float lastMovedTime;
+
+    private LTDescr moveTween;
 
     void Awake()
     {
@@ -56,6 +63,17 @@ public class WorldCursor : MonoBehaviour
         {
             useMomentum = true;
         }
+        else if (Time.time > lastMovedTime + idleTime)
+        {
+            var targetPosition = new Vector3(
+                Random.Range(World.Instance.Bounds.xMin * 0.8f, World.Instance.Bounds.xMax * 0.8f),
+                0,
+                Random.Range(World.Instance.Bounds.yMin * 0.8f, World.Instance.Bounds.yMax * 0.8f));
+            moveTween = LeanTween
+                .move(gameObject, targetPosition, 1.3f)
+                .setEaseInOutCirc();
+            lastMovedTime = Time.time;
+        }
     }
 
     public void Burst()
@@ -65,6 +83,12 @@ public class WorldCursor : MonoBehaviour
 
     public void Move(Vector2 amount)
     {
+        if (moveTween != null)
+        {
+            LeanTween.cancel(moveTween.id);
+            moveTween = null;
+        }
+
         useMomentum = false;
 
         var newPosition = Cursor.position + new Vector3(amount.x, 0, amount.y) * moveSpeed;
@@ -75,5 +99,7 @@ public class WorldCursor : MonoBehaviour
         Cursor.position = newPosition;
 
         momentum = amount;
+
+        lastMovedTime = Time.time;
     }
 }
