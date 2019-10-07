@@ -91,6 +91,14 @@ public class EntitySpawner : MonoBehaviour
 
             OnSequenceDetected(new NoteSequence(note1, note2, note3));
         }
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            var note1 = Note.Name.Earth;
+            var note2 = Note.Name.Animals;
+            var note3 = Note.Name.Plants;
+
+            OnSequenceDetected(new NoteSequence(note1, note2, note3));
+        }
     }
 #endif
 

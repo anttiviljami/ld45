@@ -24,6 +24,9 @@ public class Entity : MonoBehaviour
 
     public Vector3 Position => tr.position;
 
+    [SerializeField]
+    private Vector3 spawnOffset = Vector3.zero;
+
     protected virtual void Awake()
     {
         tr = transform;
@@ -56,7 +59,7 @@ public class Entity : MonoBehaviour
         position.x = Mathf.Clamp(position.x, World.Instance.Bounds.xMin + size.x * 0.5f, World.Instance.Bounds.xMax - size.x * 0.5f);
         position.z = Mathf.Clamp(position.z, World.Instance.Bounds.yMin + size.z * 0.5f, World.Instance.Bounds.yMax - size.z * 0.5f);
 
-        return position;
+        return position + spawnOffset;
     }
 
     protected virtual void Update()
