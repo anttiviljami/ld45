@@ -95,7 +95,7 @@ public class AchievementsController
         // check tornado
         if (noteSequence.note1.NoteName == Note.Name.Weather
         && noteSequence.note2.NoteName == Note.Name.Weather
-        && noteSequence.note3.NoteName == Note.Name.Plants)
+        && (noteSequence.note3.NoteName == Note.Name.Plants || noteSequence.note3.NoteName == Note.Name.Earth))
         {
             TriggerAchivement(Achievement.Tornado);
         }

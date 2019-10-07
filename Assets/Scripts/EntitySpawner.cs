@@ -224,6 +224,7 @@ public class EntitySpawner : MonoBehaviour
         var lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
         LeanTween
             .alpha(lightning, 0f, .2f)
+            .setDelay(.5f)
             .setDestroyOnComplete(true);
 
         // CAMERA SHAKE!
