@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(LivingEntity))]
 public class MillAboutBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private bool checkForEdges = true;
+
     private Transform tr;
 
     private Vector3 targetPosition;
@@ -42,10 +45,20 @@ public class MillAboutBehaviour : MonoBehaviour
     void GetNewTarget()
     {
         nextTargetTime = Time.time + Random.Range(10, 30);
-        targetPosition = new Vector3(
-            Random.Range(World.Instance.Bounds.xMin, World.Instance.Bounds.xMax),
-            0,
-            Random.Range(World.Instance.Bounds.yMin, World.Instance.Bounds.yMax)
-        );
+
+        if (checkForEdges)
+        {
+            targetPosition = new Vector3(
+                Random.Range(World.Instance.Bounds.xMin, World.Instance.Bounds.xMax),
+                0,
+                Random.Range(World.Instance.Bounds.yMin, World.Instance.Bounds.yMax));
+        }
+        else
+        {
+            targetPosition = tr.position + new Vector3(
+                Random.Range(-50, 50),
+                0,
+                Random.Range(-50, 50));
+        }
     }
 }

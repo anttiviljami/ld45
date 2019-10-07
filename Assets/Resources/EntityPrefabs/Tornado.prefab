@@ -135,6 +135,7 @@ MonoBehaviour:
     note3:
       name: 2
   initialPositionJitter: 2
+  spawnOffset: {x: 0, y: 0, z: 0}
   speed: 1
   hitPoints: 5
   deathEffect: {fileID: 1121372064660149824, guid: 6991d153e28df4431877a97b24864cbc,
@@ -183,3 +184,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkForEdges: 0
