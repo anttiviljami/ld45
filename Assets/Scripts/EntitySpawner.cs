@@ -76,6 +76,14 @@ public class EntitySpawner : MonoBehaviour
 
             OnSequenceDetected(new NoteSequence(note1, note2, note3));
         }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            var note1 = Note.Name.Weather;
+            var note2 = Note.Name.Animals;
+            var note3 = Note.Name.Earth;
+
+            OnSequenceDetected(new NoteSequence(note1, note2, note3));
+        }
     }
 #endif
 
@@ -96,11 +104,35 @@ public class EntitySpawner : MonoBehaviour
                 SeasonManager.Instance.SetSeason(Season.Winter);
                 break;
         }
+    }
 
+    private void ChangeTimeOfDay(Note.Name forNote)
+    {
+        switch (forNote)
+        {
+            case Note.Name.Animals:
+                TimeOfDayManager.Instance.CurrentTime = TimeOfDay.Day;
+                break;
+            case Note.Name.Earth:
+                TimeOfDayManager.Instance.CurrentTime = TimeOfDay.Evening;
+                break;
+            case Note.Name.Plants:
+                TimeOfDayManager.Instance.CurrentTime = TimeOfDay.Morning;
+                break;
+            case Note.Name.Weather:
+                TimeOfDayManager.Instance.CurrentTime = TimeOfDay.Night;
+                break;
+        }
     }
 
     private void OnSequenceDetected(NoteSequence noteSequence)
     {
+        if (noteSequence.note1.NoteName == Note.Name.Weather && noteSequence.note2.NoteName == Note.Name.Animals)
+        {
+            ChangeTimeOfDay(noteSequence.note3.NoteName);
+            return;
+        }
+
         if (noteSequence.note1.NoteName == Note.Name.Weather && noteSequence.note2.NoteName == Note.Name.Earth)
         {
             ChangeSeason(noteSequence.note3.NoteName);
