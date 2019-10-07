@@ -27,7 +27,7 @@ public class PostProcessingController : MonoBehaviour
     void MicrophoneFeed_OutputAnalyzed(MicrophoneFeed.MicrophoneOutput output)
     {
         var sensitivity = SequenceDetector.Instance.sensitivityValue;
-        var range = 2 - Mathf.Clamp01(sensitivity);
+        var range = 1 - Mathf.Clamp01(sensitivity) * 0.5f;
         var volumePercentage = output.volume / range;
 
         var distortionAmount = distortionByVolume.Evaluate(volumePercentage);

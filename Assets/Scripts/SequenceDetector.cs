@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SequenceDetector
 {
+    public static event System.Action<float> RawVolumeEvent;
+
     public const int BPM = 80; // beats per minute
     public const float BEAT_INTERVAL = 60f / (float)BPM;
     public const int SEQUENCE_LENGTH = 3;
@@ -57,7 +59,7 @@ public class SequenceDetector
     {
         MicrophoneFeed.OutputAnalyzed -= OnOutputAnalyzed;
     }
-
+    
     void OnOutputAnalyzed(MicrophoneFeed.MicrophoneOutput output)
     {
         // track volume
@@ -67,6 +69,8 @@ public class SequenceDetector
             volumeSequence.RemoveAt(0);
         }
         // count average volume
+
+        RawVolumeEvent?.Invoke(volumeSequence.Average());
 
         if (IsOverVolumeThreshold && volumeSequence.Average() < volumeThreshold)
         {

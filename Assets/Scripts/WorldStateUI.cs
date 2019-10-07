@@ -8,16 +8,26 @@ public class WorldStateUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI seasonLabel;
 
+    [SerializeField]
+    private TextMeshProUGUI volumeLabel;
+
     LTDescr seasonAlphaTween;
 
     void OnEnable()
     {
         SeasonManager.SeasonChanged += SeasonManager_SeasonChanged;
+        SequenceDetector.RawVolumeEvent += SequenceDetector_RawVolumeEvent;
+    }
+
+    private void SequenceDetector_RawVolumeEvent(float rawVolume)
+    {
+        volumeLabel.text = "Detected volume: " + Mathf.RoundToInt(rawVolume * 100);
     }
 
     void OnDisable()
     {
         SeasonManager.SeasonChanged -= SeasonManager_SeasonChanged;
+        SequenceDetector.RawVolumeEvent -= SequenceDetector_RawVolumeEvent;
     }
 
     void SeasonManager_SeasonChanged(Season newSeason)
