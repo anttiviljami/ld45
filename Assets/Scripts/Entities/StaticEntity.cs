@@ -32,6 +32,8 @@ public class StaticEntity : Entity
 
     protected override void Update()
     {
+        base.Update();
+
         if (rb && !rb.isKinematic && !isFalling)
         {
             if (Time.time <= birthTime + maxTimeToSleep && rb.mass < targetMass)
