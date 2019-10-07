@@ -4,6 +4,18 @@
 
 [Ludum Dare 45](https://ldjam.com/events/ludum-dare/45) Jam entry
 
+## Game
+
+Hum a tune or pick up an instrument to create beings from nothing to an empty world.
+
+This game requires microphone input.
+
+## Controls:
+
+- Make sure your microphone is enabled
+- Drag to move cursor
+- Pinch or scroll to zoom in
+
 ## Screenshots
 
 ![screenshot](Docs/screenshot1.png)
