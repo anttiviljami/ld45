@@ -22,11 +22,13 @@ public class AchievementsController
     {
         SequenceDetector.NoteSequenceDetected += OnNoteSequenceDetected;
         HostileBehaviour.EntityKilled += OnEntityKilled;
+        EntitySpawner.LightningStruck += OnLightningStruck;
     }
 
     public enum Achievement
     {
         LetThereBeLight,
+        Zeus,
         ApexPredator,
         WolfAttack,
         OffTheEdge,
@@ -38,6 +40,7 @@ public class AchievementsController
 
     public Dictionary<Achievement, string> achievements = new Dictionary<Achievement, string>() {
         { Achievement.LetThereBeLight, "Let there be light" },
+        { Achievement.Zeus, "Zeus" },
         { Achievement.ApexPredator, "Apex predator" },
         { Achievement.WolfAttack, "Wolf Attack" },
         { Achievement.Tornado, "Tornado season" },
@@ -151,5 +154,10 @@ public class AchievementsController
         {
             TriggerAchivement(Achievement.Murder);
         }
+    }
+
+    void OnLightningStruck(NoteSequence _)
+    {
+        TriggerAchivement(Achievement.Zeus);
     }
 }

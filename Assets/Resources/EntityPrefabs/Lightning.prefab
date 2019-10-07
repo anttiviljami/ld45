@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6025346166704000016}
   - component: {fileID: 6819409896409041740}
   m_Layer: 0
-  m_Name: tornado
+  m_Name: cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 935943451176750876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 695044847873520938}
   m_RootOrder: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 65407af42939d4390befe20d8bafc69d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb87a38f81d1646bbbb0de864bc5be3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,12 +89,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695044847873520938}
-  - component: {fileID: 5339167464910487463}
-  - component: {fileID: 819733610215520662}
-  - component: {fileID: 8519126832544609518}
-  - component: {fileID: 946324348381420061}
   m_Layer: 0
-  m_Name: Tornado
+  m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,71 +111,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5339167464910487463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d5318c9f8d04178b2eba111905bfeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recipe:
-    note1:
-      name: 8
-    note2:
-      name: 8
-    note3:
-      name: 2
-  initialPositionJitter: 2
-  speed: 1
-  hitPoints: 5
-  deathEffect: {fileID: 1121372064660149824, guid: 6991d153e28df4431877a97b24864cbc,
-    type: 3}
-  flipSpriteWhenTurning: {fileID: 0}
-  fallSpriteWhenDieing: {fileID: 0}
---- !u!54 &819733610215520662
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 5
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
---- !u!136 &8519126832544609518
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 3
-  m_Height: 10
-  m_Direction: 1
-  m_Center: {x: 0, y: 5, z: 0.75}
---- !u!114 &946324348381420061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088521700814295287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2527b23358ac4dda97c127477dcb5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
