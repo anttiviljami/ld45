@@ -129,12 +129,12 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        this.IsRunning = true;
+        this.IsRunning = false;
         GameReset?.Invoke();
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
         );
-
+        this.IsRunning = true;
     }
 
     public void ExitGame()

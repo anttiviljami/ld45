@@ -13,8 +13,17 @@ public class AchievementIndicatorController : MonoBehaviour
     void Awake()
     {
         achievementsController = AchievementsController.Instance;
-        AchievementsController.AchievementTriggered += IndicateAchievement;
         achievementText.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
+    private void OnEnable()
+    {
+        AchievementsController.AchievementTriggered += IndicateAchievement;
+    }
+
+    private void OnDisable()
+    {
+        AchievementsController.AchievementTriggered -= IndicateAchievement;
     }
 
     void IndicateAchievement(AchievementsController.Achievement achievement)

@@ -77,10 +77,13 @@ public class MenuManager : MonoBehaviour
 
     public void SetAchievementsOpen(bool open)
     {
-        achievementsOpen = open;
-        this.MenuScreen.SetActive(!achievementsOpen);
-        this.achievementsList.SetActive(achievementsOpen);
-        UpdateAchievementsText();
+        if (MenuScreen && achievementsList)
+        {
+            achievementsOpen = open;
+            this.MenuScreen.SetActive(!achievementsOpen);
+            this.achievementsList.SetActive(achievementsOpen);
+            UpdateAchievementsText();
+        }
     }
 
     public void UpdateAchievementsText()
