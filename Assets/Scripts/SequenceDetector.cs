@@ -12,7 +12,7 @@ public class SequenceDetector
     public const float BEAT_INTERVAL = 60f / (float)BPM;
     public const int SEQUENCE_LENGTH = 3;
 
-    public const float INITIAL_SENSITIVITY = .85f;
+    public const float INITIAL_SENSITIVITY = .80f;
     public const float VOLUME_THRESHOLD_SAMPLES = 4;
     public const float MIN_NOTE_COUNT = 2;
 
@@ -59,7 +59,7 @@ public class SequenceDetector
     {
         MicrophoneFeed.OutputAnalyzed -= OnOutputAnalyzed;
     }
-    
+
     void OnOutputAnalyzed(MicrophoneFeed.MicrophoneOutput output)
     {
         // track volume

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public const float MUSIC_VOLUME = .05f;
+    public const float SFX_VOLUME = .1f;
     public static event Action<bool> RunningStateChanged;
     public static event Action<bool> ToggleMute;
     public static event Action GameReset;
@@ -33,8 +35,13 @@ public class GameManager : MonoBehaviour
     private AudioClip tickSound = default;
 
     [SerializeField]
-    private AudioClip themeJingle = default;
-    private AudioSource audioSource;
+    private AudioClip music;
+
+    [SerializeField]
+    private AudioClip themeJingle;
+
+    private AudioSource musicSource;
+    private AudioSource sfxSource;
 
     private MicrophoneFeed microphoneFeed;
 
@@ -79,9 +86,20 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
+        ToggleMute += OnToggleMute;
+
         microphoneFeed = gameObject.AddComponent<MicrophoneFeed>();
         sequenceDetector = SequenceDetector.Instance;
-        audioSource = GetComponent<AudioSource>();
+
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        sfxSource.volume = SFX_VOLUME;
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.volume = MUSIC_VOLUME;
+
+        // start music
+        musicSource.clip = music;
+        musicSource.loop = true;
+        musicSource.Play();
 
         // send running state change
         this.IsRunning = true;
@@ -103,14 +121,14 @@ public class GameManager : MonoBehaviour
         microphoneFeed.IsRecording = true; // start recording
         InvokeRepeating("Beat", SequenceDetector.BEAT_INTERVAL, SequenceDetector.BEAT_INTERVAL);
         if (!IsMuted)
-            audioSource.PlayOneShot(themeJingle);
+            sfxSource.PlayOneShot(themeJingle);
     }
 
     void Beat()
     {
         sequenceDetector.Beat(); // triggers beat
         if (!IsMuted)
-            audioSource.PlayOneShot(tickSound, .1f);
+            sfxSource.PlayOneShot(tickSound, .25f);
     }
 
     private void Update()
@@ -140,5 +158,13 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void OnToggleMute(bool mute)
+    {
+        if (mute)
+            musicSource.Stop();
+        else
+            musicSource.Play();
     }
 }
