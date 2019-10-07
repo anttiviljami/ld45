@@ -66,7 +66,7 @@ public class AttackEffect : MonoBehaviour
     }
 
     [SerializeField]
-    private ParticleSystem particles;
+    private ParticleSystem particles = default;
 
     private Transform tr;
 

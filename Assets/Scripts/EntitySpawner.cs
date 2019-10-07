@@ -21,7 +21,7 @@ public class EntitySpawner : MonoBehaviour
     private List<Entity> prefabLibrary = new List<Entity>();
 
     [SerializeField]
-    private GameObject lightningPrefab;
+    private GameObject lightningPrefab = default;
 
     public static event System.Action<NoteSequence> LightningStruck;
 

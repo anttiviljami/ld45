@@ -51,7 +51,7 @@ public class TimeOfDayManager : MonoBehaviour
     }
 
     [SerializeField]
-    private GameObject timeOfDayDisplay;
+    private GameObject timeOfDayDisplay = default;
 
     void Awake()
     {

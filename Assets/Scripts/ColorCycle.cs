@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColorCycle : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer = default;
 
     [SerializeField]
     private Color color1 = Color.yellow;

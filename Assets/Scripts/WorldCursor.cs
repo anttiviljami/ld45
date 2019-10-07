@@ -28,7 +28,7 @@ public class WorldCursor : MonoBehaviour
     private float momentumDamping = 1;
 
     [SerializeField]
-    private ParticleSystem burstParticles;
+    private ParticleSystem burstParticles = default;
 
     private bool useMomentum = false;
     private Vector2 momentum;

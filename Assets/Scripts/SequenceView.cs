@@ -7,25 +7,25 @@ using UnityEngine.UI;
 public class SequenceView : MonoBehaviour
 {
     [SerializeField]
-    private Sprite animalIcon;
+    private Sprite animalIcon = default;
 
     [SerializeField]
-    private Sprite earthIcon;
+    private Sprite earthIcon = default;
 
     [SerializeField]
-    private Sprite weatherIcon;
+    private Sprite weatherIcon = default;
 
     [SerializeField]
-    private Sprite plantIcon;
+    private Sprite plantIcon = default;
 
     [SerializeField]
-    private Sprite emptyIcon;
+    private Sprite emptyIcon = default;
 
     [SerializeField]
-    private Color mainColor;
+    private Color mainColor = default;
 
     [SerializeField]
-    private Color successColor;
+    private Color successColor = default;
 
     private List<GameObject> noteBlocks = new List<GameObject>();
 

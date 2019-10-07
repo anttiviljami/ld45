@@ -6,7 +6,7 @@ using TMPro;
 public class AchievementIndicatorController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject achievementText;
+    private GameObject achievementText = default;
 
     private AchievementsController achievementsController;
 

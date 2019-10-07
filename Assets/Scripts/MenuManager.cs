@@ -7,30 +7,30 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject overlay;
+    private GameObject overlay = default;
 
     [SerializeField]
-    private GameObject MenuScreen;
+    private GameObject MenuScreen = default;
 
     [SerializeField]
-    private GameObject achievementsList;
+    private GameObject achievementsList = default;
 
     [SerializeField]
-    private GameObject achievementNames;
+    private GameObject achievementNames = default;
     [SerializeField]
-    private GameObject achievementTicks;
+    private GameObject achievementTicks = default;
 
     [SerializeField]
-    private GameObject sensitivitySlider;
+    private GameObject sensitivitySlider = default;
 
     [SerializeField]
-    private GameObject sensitivityText;
+    private GameObject sensitivityText = default;
 
     [SerializeField]
-    private GameObject muteButtonOn;
+    private GameObject muteButtonOn = default;
 
     [SerializeField]
-    private GameObject muteButtonOff;
+    private GameObject muteButtonOff = default;
 
     private GameManager gameManager;
     private SequenceDetector sequenceDetector;

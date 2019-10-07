@@ -7,7 +7,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class PostProcessingController : MonoBehaviour
 {
     [SerializeField]
-    private AnimationCurve distortionByVolume;
+    private AnimationCurve distortionByVolume = default;
 
     private PostProcessVolume volume;
 

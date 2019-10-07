@@ -31,31 +31,31 @@ public class SeasonManager : MonoBehaviour
     }
 
     [SerializeField]
-    private Renderer groundRenderer;
+    private Renderer groundRenderer = default;
 
-    private Season CurrentSeason;
+    private Season CurrentSeason = default;
 
     [SerializeField]
-    private PostProcessVolume postProcessingVolumeSpring;
+    private PostProcessVolume postProcessingVolumeSpring = default;
     [SerializeField]
-    private PostProcessVolume postProcessingVolumeSummer;
+    private PostProcessVolume postProcessingVolumeSummer = default;
     [SerializeField]
-    private PostProcessVolume postProcessingVolumeAutumn;
+    private PostProcessVolume postProcessingVolumeAutumn = default;
     [SerializeField]
-    private PostProcessVolume postProcessingVolumeWinter;
+    private PostProcessVolume postProcessingVolumeWinter = default;
 
     private PostProcessVolume currentPostProcessingVolume;
 
     private Dictionary<Season, Material> materials;
 
     [SerializeField]
-    private Material materialSpring;
+    private Material materialSpring = default;
     [SerializeField]
-    private Material materialSummer;
+    private Material materialSummer = default;
     [SerializeField]
-    private Material materialAutumn;
+    private Material materialAutumn = default;
     [SerializeField]
-    private Material materialWinter;
+    private Material materialWinter = default;
 
     void Awake()
     {

@@ -11,10 +11,10 @@ public class AvoidanceBehaviour : MonoBehaviour
     private float moveInterval = 20;
 
     [SerializeField]
-    private Note.Name targetNote1;
+    private Note.Name targetNote1 = default;
 
     [SerializeField]
-    private Note.Name targetNote2;
+    private Note.Name targetNote2 = default;
 
     [SerializeField]
     private float range = 20;

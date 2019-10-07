@@ -7,25 +7,25 @@ using TMPro;
 public class OnboardingSequenceController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject overlay;
+    private GameObject overlay = default;
 
     [SerializeField]
-    private GameObject title;
+    private GameObject title = default;
 
     [SerializeField]
-    private GameObject credits;
+    private GameObject credits = default;
 
     [SerializeField]
-    private GameObject instruction1;
+    private GameObject instruction1 = default;
 
     [SerializeField]
-    private GameObject instruction2;
+    private GameObject instruction2 = default;
 
     [SerializeField]
-    private GameObject instruction3;
+    private GameObject instruction3 = default;
 
     [SerializeField]
-    private GameObject instruction4;
+    private GameObject instruction4 = default;
 
     public enum OnboardingState
     {

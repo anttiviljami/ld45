@@ -6,10 +6,10 @@ using TMPro;
 public class WorldStateUI : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI seasonLabel;
+    private TextMeshProUGUI seasonLabel = default;
 
     [SerializeField]
-    private TextMeshProUGUI volumeLabel;
+    private TextMeshProUGUI volumeLabel = default;
 
     LTDescr seasonAlphaTween;
 

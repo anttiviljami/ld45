@@ -23,13 +23,13 @@ public class LivingEntity : Entity
     private int currentMovePriority = -1;
 
     [SerializeField]
-    private GameObject deathEffect;
+    private GameObject deathEffect = default;
 
     [SerializeField]
-    private Transform flipSpriteWhenTurning;
+    private Transform flipSpriteWhenTurning = default;
 
     [SerializeField]
-    private Transform fallSpriteWhenDieing;
+    private Transform fallSpriteWhenDieing = default;
 
     void FixedUpdate()
     {

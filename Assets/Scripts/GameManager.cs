@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
     public static event Action GameReset;
 
     [SerializeField]
-    private AudioClip tickSound;
+    private AudioClip tickSound = default;
 
     [SerializeField]
-    private AudioClip themeJingle;
+    private AudioClip themeJingle = default;
     private AudioSource audioSource;
 
     private MicrophoneFeed microphoneFeed;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     private SequenceDetector sequenceDetector;
 
     [SerializeField]
-    private GameObject onboardingSequence;
+    private GameObject onboardingSequence = default;
 
     private bool isRunning = false;
     public bool IsRunning
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
     } // pause / unpause game
 
-    private bool IsRecording = true; // stop recording
+    //private bool IsRecording = true; // stop recording
 
     void Awake()
     {
