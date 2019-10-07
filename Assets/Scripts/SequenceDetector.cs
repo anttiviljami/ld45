@@ -150,7 +150,12 @@ public class SequenceDetector
         if (pitch == 0) return "unknown"; // no pitch detected
         var notes = new[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         var noteNum = 12 * (Mathf.Log(pitch / 440) / Mathf.Log(2));
-        return notes[(Mathf.RoundToInt(noteNum) + 69) % 12];
+        var index = (Mathf.RoundToInt(noteNum) + 69) % 12;
+        while (index < 0)
+        {
+            index += 12;
+        }
+        return notes[index];
     }
 
     private Note mapOutputsToNote(List<MicrophoneFeed.MicrophoneOutput> outputs, bool debug = false)
