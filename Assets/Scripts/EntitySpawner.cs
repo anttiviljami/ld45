@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class EntitySpawner : MonoBehaviour
 {
+    public const float LIGHTNING_RANGE = 25f;
+
     [SerializeField]
     private Entity defaultPrefab = default;
 
@@ -17,6 +19,11 @@ public class EntitySpawner : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
 
     private List<Entity> prefabLibrary = new List<Entity>();
+
+    [SerializeField]
+    private GameObject lightningPrefab;
+
+    public static event System.Action<NoteSequence> LightningStruck;
 
     void Awake()
     {
@@ -133,9 +140,17 @@ public class EntitySpawner : MonoBehaviour
             return;
         }
 
+        // season change
         if (noteSequence.note1.NoteName == Note.Name.Weather && noteSequence.note2.NoteName == Note.Name.Earth)
         {
             ChangeSeason(noteSequence.note3.NoteName);
+            return;
+        }
+
+        // lightning (destruction)
+        if (noteSequence.note1.NoteName == Note.Name.Weather && noteSequence.note2.NoteName == Note.Name.Weather && noteSequence.note3.NoteName == Note.Name.Weather)
+        {
+            CallLightning();
             return;
         }
 
@@ -181,8 +196,30 @@ public class EntitySpawner : MonoBehaviour
         }
     }
 
-    public void GetEntitiesInRange(NoteSequence sequence, float position, float range)
+    private void CallLightning()
     {
+        // find closest entity
+        var entity = EntityManager.Instance.GetClosestInRange(WorldCursor.Instance.Cursor.position, LIGHTNING_RANGE, new NoteSequence());
+        var lightningPos = WorldCursor.Instance.Cursor.position;
 
+        if (entity)
+        {
+            // destroy entity
+            lightningPos = entity.gameObject.transform.position;
+            Destroy(entity.gameObject);
+
+            // call event
+            LightningStruck(entity.NoteSequence);
+        }
+
+        // lightning animation
+        var lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
+        LeanTween
+            .alpha(lightning, 0f, .2f)
+            .setDestroyOnComplete(true);
+
+        // CAMERA SHAKE!
+        impulseSource.GenerateImpulse(Vector3.one * impulseStrength * 1);
     }
+
 }

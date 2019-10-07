@@ -50,7 +50,7 @@ public class EntityAttractBehaviour : MonoBehaviour
         }
         else if (Time.time > nextMoveStart && Time.time > moveStartLimit)
         {
-            Target = EntityManager.Instance.GetClosestInRange(entity.Position, range, targetNote1, targetNote2, entity.recipe);
+            Target = EntityManager.Instance.GetClosestInWithNotes(entity.Position, range, targetNote1, targetNote2, entity.recipe);
             if (Target)
             {
                 moveEndTime = Time.time + moveTime;

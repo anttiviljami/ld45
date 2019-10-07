@@ -48,6 +48,8 @@ MonoBehaviour:
     type: 3}
   entitiesRoot: {fileID: 6636864104321035120}
   impulseStrength: 1
+  lightningPrefab: {fileID: 8088521700814295287, guid: caaa85f6e77bb434da7f0ba2f983fbd6,
+    type: 3}
 --- !u!114 &7335950692073621641
 MonoBehaviour:
   m_ObjectHideFlags: 0
