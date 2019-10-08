@@ -16,9 +16,9 @@ This game requires microphone input.
 - Drag to move cursor
 - Pinch or scroll to zoom in
 
-## Screenshots
+## Screenshot
 
-![screenshot](Docs/screenshot1.png)
+![screenshot](Docs/screenshot2.png)
 
 ## Requirements
 
